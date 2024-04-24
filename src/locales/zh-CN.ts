@@ -335,22 +335,19 @@ export default {
   guideDemo: {
     guide: '引导页',
     start: '开始',
-    message:
-      '引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。引导页基于 driver.js'
+    message: '引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。引导页基于 driver.js'
   },
   iconDemo: {
     icon: '图标',
     localIcon: '本地图标',
     iconify: 'Iconify组件',
     recommendedUse: '推荐使用',
-    recommendeDes:
-      'Iconify组件基本包含所有的图标，你可以查询到你想要的任何图标。并且打包只会打包所用到的图标。',
+    recommendeDes: 'Iconify组件基本包含所有的图标，你可以查询到你想要的任何图标。并且打包只会打包所用到的图标。',
     accessAddress: '访问地址'
   },
   echartDemo: {
     echart: '图表',
-    echartDes:
-      '基于 echarts 二次封装组件，自适应宽度，只需传入 options 与 height 属性即可展示对应的图表。'
+    echartDes: '基于 echarts 二次封装组件，自适应宽度，只需传入 options 与 height 属性即可展示对应的图表。'
   },
   countToDemo: {
     countTo: '数字动画',

@@ -302,57 +302,26 @@ const changeResetLoading = () => {
 </script>
 
 <template>
-  <ContentWrap
-    :title="`${t('searchDemo.search')} ${t('searchDemo.operate')}`"
-    style="margin-bottom: 20px"
-  >
+  <ContentWrap :title="`${t('searchDemo.search')} ${t('searchDemo.operate')}`" style="margin-bottom: 20px">
     <BaseButton @click="changeGrid(true)">{{ t('searchDemo.grid') }}</BaseButton>
-    <BaseButton @click="changeGrid(false)">
-      {{ t('searchDemo.restore') }} {{ t('searchDemo.grid') }}
-    </BaseButton>
+    <BaseButton @click="changeGrid(false)"> {{ t('searchDemo.restore') }} {{ t('searchDemo.grid') }} </BaseButton>
 
-    <BaseButton @click="changeLayout">
-      {{ t('searchDemo.button') }} {{ t('searchDemo.position') }}
-    </BaseButton>
+    <BaseButton @click="changeLayout"> {{ t('searchDemo.button') }} {{ t('searchDemo.position') }} </BaseButton>
 
-    <BaseButton @click="changePosition('left')">
-      {{ t('searchDemo.bottom') }} {{ t('searchDemo.position') }}-{{ t('searchDemo.left') }}
-    </BaseButton>
-    <BaseButton @click="changePosition('center')">
-      {{ t('searchDemo.bottom') }} {{ t('searchDemo.position') }}-{{ t('searchDemo.center') }}
-    </BaseButton>
-    <BaseButton @click="changePosition('right')">
-      {{ t('searchDemo.bottom') }} {{ t('searchDemo.position') }}-{{ t('searchDemo.right') }}
-    </BaseButton>
-    <BaseButton @click="getDictOne">
-      {{ t('formDemo.select') }} {{ t('searchDemo.dynamicOptions') }}
-    </BaseButton>
+    <BaseButton @click="changePosition('left')"> {{ t('searchDemo.bottom') }} {{ t('searchDemo.position') }}-{{ t('searchDemo.left') }} </BaseButton>
+    <BaseButton @click="changePosition('center')"> {{ t('searchDemo.bottom') }} {{ t('searchDemo.position') }}-{{ t('searchDemo.center') }} </BaseButton>
+    <BaseButton @click="changePosition('right')"> {{ t('searchDemo.bottom') }} {{ t('searchDemo.position') }}-{{ t('searchDemo.right') }} </BaseButton>
+    <BaseButton @click="getDictOne"> {{ t('formDemo.select') }} {{ t('searchDemo.dynamicOptions') }} </BaseButton>
     <BaseButton @click="delRadio">{{ t('searchDemo.deleteRadio') }}</BaseButton>
     <BaseButton @click="restoreRadio">{{ t('searchDemo.restoreRadio') }}</BaseButton>
     <BaseButton @click="setValue">{{ t('formDemo.setValue') }}</BaseButton>
 
-    <BaseButton @click="changeSearchLoading">
-      {{ t('searchDemo.search') }} {{ t('searchDemo.loading') }}
-    </BaseButton>
-    <BaseButton @click="changeResetLoading">
-      {{ t('searchDemo.reset') }} {{ t('searchDemo.loading') }}
-    </BaseButton>
+    <BaseButton @click="changeSearchLoading"> {{ t('searchDemo.search') }} {{ t('searchDemo.loading') }} </BaseButton>
+    <BaseButton @click="changeResetLoading"> {{ t('searchDemo.reset') }} {{ t('searchDemo.loading') }} </BaseButton>
   </ContentWrap>
 
   <ContentWrap :title="t('searchDemo.search')" :message="t('searchDemo.searchDes')">
-    <Search
-      :schema="schema"
-      :is-col="isGrid"
-      :layout="layout"
-      :button-position="buttonPosition"
-      :search-loading="searchLoading"
-      :reset-loading="resetLoading"
-      show-expand
-      expand-field="field6"
-      @search="handleSearch"
-      @reset="handleSearch"
-      @register="searchRegister"
-    />
+    <Search :schema="schema" :is-col="isGrid" :layout="layout" :button-position="buttonPosition" :search-loading="searchLoading" :reset-loading="resetLoading" show-expand expand-field="field6" @search="handleSearch" @reset="handleSearch" @register="searchRegister" />
   </ContentWrap>
 </template>
 

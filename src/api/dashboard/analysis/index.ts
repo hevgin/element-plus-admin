@@ -1,10 +1,5 @@
 import request from '@/axios'
-import type {
-  AnalysisTotalTypes,
-  UserAccessSource,
-  WeeklyUserActivity,
-  MonthlySales
-} from './types'
+import type { AnalysisTotalTypes, UserAccessSource, WeeklyUserActivity, MonthlySales } from './types'
 
 export const getCountApi = (): Promise<IResponse<AnalysisTotalTypes[]>> => {
   return request.get({ url: '/mock/analysis/total' })

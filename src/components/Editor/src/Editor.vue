@@ -117,20 +117,9 @@ defineExpose({
 <template>
   <div class="border-1 border-solid border-[var(--el-border-color)] z-10">
     <!-- 工具栏 -->
-    <Toolbar
-      :editor="editorRef"
-      :editorId="editorId"
-      class="border-0 b-b-1 border-solid border-[var(--el-border-color)]"
-    />
+    <Toolbar :editor="editorRef" :editorId="editorId" class="border-0 b-b-1 border-solid border-[var(--el-border-color)]" />
     <!-- 编辑器 -->
-    <Editor
-      v-model="valueHtml"
-      :editorId="editorId"
-      :defaultConfig="editorConfig"
-      :style="editorStyle"
-      @on-change="handleChange"
-      @on-created="handleCreated"
-    />
+    <Editor v-model="valueHtml" :editorId="editorId" :defaultConfig="editorConfig" :style="editorStyle" @on-change="handleChange" @on-created="handleCreated" />
   </div>
 </template>
 

@@ -9,20 +9,7 @@ export const lineOptions: EChartsOption = {
     left: 'center'
   },
   xAxis: {
-    data: [
-      t('analysis.january'),
-      t('analysis.february'),
-      t('analysis.march'),
-      t('analysis.april'),
-      t('analysis.may'),
-      t('analysis.june'),
-      t('analysis.july'),
-      t('analysis.august'),
-      t('analysis.september'),
-      t('analysis.october'),
-      t('analysis.november'),
-      t('analysis.december')
-    ],
+    data: [t('analysis.january'), t('analysis.february'), t('analysis.march'), t('analysis.april'), t('analysis.may'), t('analysis.june'), t('analysis.july'), t('analysis.august'), t('analysis.september'), t('analysis.october'), t('analysis.november'), t('analysis.december')],
     boundaryGap: false,
     axisTick: {
       show: false
@@ -84,13 +71,7 @@ export const pieOptions: EChartsOption = {
   legend: {
     orient: 'vertical',
     left: 'left',
-    data: [
-      t('analysis.directAccess'),
-      t('analysis.mailMarketing'),
-      t('analysis.allianceAdvertising'),
-      t('analysis.videoAdvertising'),
-      t('analysis.searchEngines')
-    ]
+    data: [t('analysis.directAccess'), t('analysis.mailMarketing'), t('analysis.allianceAdvertising'), t('analysis.videoAdvertising'), t('analysis.searchEngines')]
   },
   series: [
     {
@@ -127,15 +108,7 @@ export const barOptions: EChartsOption = {
   },
   xAxis: {
     type: 'category',
-    data: [
-      t('analysis.monday'),
-      t('analysis.tuesday'),
-      t('analysis.wednesday'),
-      t('analysis.thursday'),
-      t('analysis.friday'),
-      t('analysis.saturday'),
-      t('analysis.sunday')
-    ],
+    data: [t('analysis.monday'), t('analysis.tuesday'), t('analysis.wednesday'), t('analysis.thursday'), t('analysis.friday'), t('analysis.saturday'), t('analysis.sunday')],
     axisTick: {
       alignWithLabel: true
     }
@@ -197,15 +170,7 @@ export const wordOptions = {
       drawOutOfBound: true,
       textStyle: {
         color: function () {
-          return (
-            'rgb(' +
-            [
-              Math.round(Math.random() * 160),
-              Math.round(Math.random() * 160),
-              Math.round(Math.random() * 160)
-            ].join(',') +
-            ')'
-          )
+          return 'rgb(' + [Math.round(Math.random() * 160), Math.round(Math.random() * 160), Math.round(Math.random() * 160)].join(',') + ')'
         }
       },
       emphasis: {

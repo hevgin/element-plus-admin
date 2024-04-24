@@ -1,25 +1,5 @@
 import type { Component } from 'vue'
-import {
-  ElCascader,
-  ElCheckboxGroup,
-  ElColorPicker,
-  ElDatePicker,
-  ElInput,
-  ElInputNumber,
-  ElRadioGroup,
-  ElRate,
-  ElSelect,
-  ElSelectV2,
-  ElSlider,
-  ElSwitch,
-  ElTimePicker,
-  ElTimeSelect,
-  ElTransfer,
-  ElAutocomplete,
-  ElDivider,
-  ElTreeSelect,
-  ElUpload
-} from 'element-plus'
+import { ElCascader, ElCheckboxGroup, ElColorPicker, ElDatePicker, ElInput, ElInputNumber, ElRadioGroup, ElRate, ElSelect, ElSelectV2, ElSlider, ElSwitch, ElTimePicker, ElTimeSelect, ElTransfer, ElAutocomplete, ElDivider, ElTreeSelect, ElUpload } from 'element-plus'
 import { InputPassword } from '@/components/InputPassword'
 import { Editor } from '@/components/Editor'
 import { JsonEditor } from '@/components/JsonEditor'

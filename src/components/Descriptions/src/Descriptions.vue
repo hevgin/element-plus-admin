@@ -78,20 +78,9 @@ export default defineComponent({
 
     return () => {
       return (
-        <div
-          class={[
-            prefixCls,
-            'bg-[var(--el-color-white)] dark:bg-[var(--el-bg-color)] dark:border-[var(--el-border-color)] dark:border-1px'
-          ]}
-        >
+        <div class={[prefixCls, 'bg-[var(--el-color-white)] dark:bg-[var(--el-bg-color)] dark:border-[var(--el-border-color)] dark:border-1px']}>
           {props.title ? (
-            <div
-              class={[
-                `${prefixCls}-header`,
-                'relative h-50px flex justify-between items-center layout-border__bottom px-10px cursor-pointer'
-              ]}
-              onClick={toggleClick}
-            >
+            <div class={[`${prefixCls}-header`, 'relative h-50px flex justify-between items-center layout-border__bottom px-10px cursor-pointer']} onClick={toggleClick}>
               <div class={[`${prefixCls}-header__title`, 'relative font-18px font-bold ml-10px']}>
                 <div class="flex items-center">
                   {props.title}
@@ -108,45 +97,23 @@ export default defineComponent({
 
           <ElCollapseTransition>
             <div v-show={unref(show)} class={[`${prefixCls}-content`, 'p-20px']}>
-              <ElRow
-                gutter={0}
-                {...unref(getBindValue)}
-                class="outline-1px outline-[var(--el-border-color-lighter)] outline-solid"
-              >
+              <ElRow gutter={0} {...unref(getBindValue)} class="outline-1px outline-[var(--el-border-color-lighter)] outline-solid">
                 {props.schema.map((item) => {
                   return (
-                    <ElCol
-                      key={item.field}
-                      span={item.span || 24 / props.column}
-                      class="flex items-stretch"
-                    >
+                    <ElCol key={item.field} span={item.span || 24 / props.column} class="flex items-stretch">
                       {props.direction === 'horizontal' ? (
                         <div class="flex items-stretch bg-[var(--el-fill-color-light)] outline-1px outline-[var(--el-border-color-lighter)] outline-solid flex-1">
-                          <div
-                            {...getBindItemValue(item)}
-                            class="w-120px text-left px-8px py-11px font-700 color-[var(--el-text-color-regular)] border-r-1px border-r-[var(--el-border-color-lighter)] border-r-solid "
-                          >
+                          <div {...getBindItemValue(item)} class="w-120px text-left px-8px py-11px font-700 color-[var(--el-text-color-regular)] border-r-1px border-r-[var(--el-border-color-lighter)] border-r-solid ">
                             {item.label}
                           </div>
-                          <div class="flex-1 px-8px py-11px bg-[var(--el-bg-color)] color-[var(--el-text-color-primary)] text-size-14px">
-                            {item.slots?.default
-                              ? item.slots?.default(props.data)
-                              : get(props.data, item.field) ?? defaultData}
-                          </div>
+                          <div class="flex-1 px-8px py-11px bg-[var(--el-bg-color)] color-[var(--el-text-color-primary)] text-size-14px">{item.slots?.default ? item.slots?.default(props.data) : get(props.data, item.field) ?? defaultData}</div>
                         </div>
                       ) : (
                         <div class="bg-[var(--el-fill-color-light)] outline-1px outline-[var(--el-border-color-lighter)] outline-solid flex-1">
-                          <div
-                            {...getBindItemValue(item)}
-                            class="text-left px-8px py-11px font-700 color-[var(--el-text-color-regular)] border-b-1px border-b-[var(--el-border-color-lighter)] border-b-solid"
-                          >
+                          <div {...getBindItemValue(item)} class="text-left px-8px py-11px font-700 color-[var(--el-text-color-regular)] border-b-1px border-b-[var(--el-border-color-lighter)] border-b-solid">
                             {item.label}
                           </div>
-                          <div class="flex-1 px-8px py-11px bg-[var(--el-bg-color)] color-[var(--el-text-color-primary)] text-size-14px">
-                            {item.slots?.default
-                              ? item.slots?.default(props.data)
-                              : get(props.data, item.field) ?? defaultData}
-                          </div>
+                          <div class="flex-1 px-8px py-11px bg-[var(--el-bg-color)] color-[var(--el-text-color-primary)] text-size-14px">{item.slots?.default ? item.slots?.default(props.data) : get(props.data, item.field) ?? defaultData}</div>
                         </div>
                       )}
                     </ElCol>

@@ -34,13 +34,7 @@ const setLang = (lang: LocaleType) => {
 
 <template>
   <ElDropdown :class="prefixCls" trigger="click" @command="setLang">
-    <Icon
-      :size="18"
-      icon="ion:language-sharp"
-      class="cursor-pointer !p-0"
-      :class="$attrs.class"
-      :color="color"
-    />
+    <Icon :size="18" icon="ion:language-sharp" class="cursor-pointer !p-0" :class="$attrs.class" :color="color" />
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem v-for="item in langMap" :key="item.lang" :command="item.lang">

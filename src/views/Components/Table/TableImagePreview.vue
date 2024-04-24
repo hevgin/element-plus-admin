@@ -35,15 +35,7 @@ const columns: TableColumn[] = [
     field: 'importance',
     label: t('tableDemo.importance'),
     formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
-      return (
-        <ElTag type={cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'}>
-          {cellValue === 1
-            ? t('tableDemo.important')
-            : cellValue === 2
-              ? t('tableDemo.good')
-              : t('tableDemo.commonly')}
-        </ElTag>
-      )
+      return <ElTag type={cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'}>{cellValue === 1 ? t('tableDemo.important') : cellValue === 2 ? t('tableDemo.good') : t('tableDemo.commonly')}</ElTag>
     }
   },
   {
@@ -77,11 +69,6 @@ getTableList()
 
 <template>
   <ContentWrap :title="t('router.PicturePreview')">
-    <Table
-      :columns="columns"
-      :data="tableDataList"
-      :loading="loading"
-      :image-preview="['image_uri']"
-    />
+    <Table :columns="columns" :data="tableDataList" :loading="loading" :image-preview="['image_uri']" />
   </ContentWrap>
 </template>

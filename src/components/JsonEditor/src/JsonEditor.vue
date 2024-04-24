@@ -4,13 +4,7 @@ import 'vue-json-pretty/lib/styles.css'
 import { propTypes } from '@/utils/propTypes'
 import { computed } from 'vue'
 
-const emits = defineEmits([
-  'update:modelValue',
-  'node-click',
-  'brackets-click',
-  'icon-click',
-  'selected-value'
-])
+const emits = defineEmits(['update:modelValue', 'node-click', 'brackets-click', 'icon-click', 'selected-value'])
 
 const props = defineProps({
   modelValue: {

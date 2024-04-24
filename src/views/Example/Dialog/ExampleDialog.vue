@@ -143,19 +143,7 @@ const crudSchemas = reactive<CrudSchema[]>([
     detail: {
       slots: {
         default: (data: any) => {
-          return (
-            <ElTag
-              type={
-                data.importance === 1 ? 'success' : data.importance === 2 ? 'warning' : 'danger'
-              }
-            >
-              {data.importance === 1
-                ? t('tableDemo.important')
-                : data.importance === 2
-                  ? t('tableDemo.good')
-                  : t('tableDemo.commonly')}
-            </ElTag>
-          )
+          return <ElTag type={data.importance === 1 ? 'success' : data.importance === 2 ? 'warning' : 'danger'}>{data.importance === 1 ? t('tableDemo.important') : data.importance === 2 ? t('tableDemo.good') : t('tableDemo.commonly')}</ElTag>
         }
       }
     }
@@ -312,26 +300,12 @@ const save = async () => {
   </ContentWrap>
 
   <Dialog v-model="dialogVisible" :title="dialogTitle">
-    <Write
-      v-if="actionType !== 'detail'"
-      ref="writeRef"
-      :form-schema="allSchemas.formSchema"
-      :current-row="currentRow"
-    />
+    <Write v-if="actionType !== 'detail'" ref="writeRef" :form-schema="allSchemas.formSchema" :current-row="currentRow" />
 
-    <Detail
-      v-if="actionType === 'detail'"
-      :detail-schema="allSchemas.detailSchema"
-      :current-row="currentRow"
-    />
+    <Detail v-if="actionType === 'detail'" :detail-schema="allSchemas.detailSchema" :current-row="currentRow" />
 
     <template #footer>
-      <BaseButton
-        v-if="actionType !== 'detail'"
-        type="primary"
-        :loading="saveLoading"
-        @click="save"
-      >
+      <BaseButton v-if="actionType !== 'detail'" type="primary" :loading="saveLoading" @click="save">
         {{ t('exampleDemo.save') }}
       </BaseButton>
       <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>

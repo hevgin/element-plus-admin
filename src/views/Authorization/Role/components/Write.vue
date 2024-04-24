@@ -58,16 +58,7 @@ const formSchema = ref<FormSchema[]>([
             <>
               <div class="flex w-full">
                 <div class="flex-1">
-                  <ElTree
-                    ref={treeRef}
-                    show-checkbox
-                    node-key="id"
-                    highlight-current
-                    check-strictly
-                    expand-on-click-node={false}
-                    data={treeData.value}
-                    onNode-click={nodeClick}
-                  >
+                  <ElTree ref={treeRef} show-checkbox node-key="id" highlight-current check-strictly expand-on-click-node={false} data={treeData.value} onNode-click={nodeClick}>
                     {{
                       default: (data) => {
                         return <span>{data.data.meta.title}</span>

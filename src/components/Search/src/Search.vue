@@ -24,9 +24,7 @@ const props = defineProps({
   // 操作按钮风格位置
   layout: propTypes.string.validate((v: string) => ['inline', 'bottom'].includes(v)).def('inline'),
   // 底部按钮的对齐方式
-  buttonPosition: propTypes.string
-    .validate((v: string) => ['left', 'center', 'right'].includes(v))
-    .def('center'),
+  buttonPosition: propTypes.string.validate((v: string) => ['left', 'center', 'right'].includes(v)).def('center'),
   showSearch: propTypes.bool.def(true),
   showReset: propTypes.bool.def(true),
   // 是否显示伸缩
@@ -241,30 +239,11 @@ const onFormValidate = (prop: FormItemProp, isValid: boolean, message: string) =
 </script>
 
 <template>
-  <Form
-    :model="formModel"
-    :is-custom="false"
-    :label-width="getProps.labelWidth"
-    hide-required-asterisk
-    :inline="getProps.inline"
-    :is-col="getProps.isCol"
-    :schema="schemaRef"
-    @register="formRegister"
-    @validate="onFormValidate"
-  />
+  <Form :model="formModel" :is-custom="false" :label-width="getProps.labelWidth" hide-required-asterisk :inline="getProps.inline" :is-col="getProps.isCol" :schema="schemaRef" @register="formRegister" @validate="onFormValidate" />
 
   <template v-if="layout === 'bottom'">
     <div :style="bottomButtonStyle">
-      <ActionButton
-        :show-reset="getProps.showReset"
-        :show-search="getProps.showSearch"
-        :show-expand="getProps.showExpand"
-        :search-loading="getProps.searchLoading"
-        :reset-loading="getProps.resetLoading"
-        @expand="setVisible"
-        @reset="reset"
-        @search="search"
-      />
+      <ActionButton :show-reset="getProps.showReset" :show-search="getProps.showSearch" :show-expand="getProps.showExpand" :search-loading="getProps.searchLoading" :reset-loading="getProps.resetLoading" @expand="setVisible" @reset="reset" @search="search" />
     </div>
   </template>
 </template>

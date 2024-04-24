@@ -165,12 +165,7 @@ export const useTable = (config: UseTableConfig) => {
           ElMessage.success(t('common.delSuccess'))
 
           // 计算出临界点
-          const current =
-            unref(total) % unref(pageSize) === idsLength || unref(pageSize) === 1
-              ? unref(currentPage) > 1
-                ? unref(currentPage) - 1
-                : unref(currentPage)
-              : unref(currentPage)
+          const current = unref(total) % unref(pageSize) === idsLength || unref(pageSize) === 1 ? (unref(currentPage) > 1 ? unref(currentPage) - 1 : unref(currentPage)) : unref(currentPage)
 
           currentPage.value = current
           methods.getList()

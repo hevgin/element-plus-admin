@@ -1,11 +1,4 @@
-import type {
-  InternalAxiosRequestConfig,
-  AxiosResponse,
-  AxiosRequestConfig,
-  AxiosInstance,
-  AxiosRequestHeaders,
-  AxiosError
-} from 'axios'
+import type { InternalAxiosRequestConfig, AxiosResponse, AxiosRequestConfig, AxiosInstance, AxiosRequestHeaders, AxiosError } from 'axios'
 
 interface RequestInterceptors<T> {
   // 请求拦截
@@ -20,12 +13,4 @@ interface RequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
   interceptors?: RequestInterceptors<T>
 }
 
-export {
-  AxiosResponse,
-  RequestInterceptors,
-  RequestConfig,
-  AxiosInstance,
-  InternalAxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosError
-}
+export { AxiosResponse, RequestInterceptors, RequestConfig, AxiosInstance, InternalAxiosRequestConfig, AxiosRequestHeaders, AxiosError }

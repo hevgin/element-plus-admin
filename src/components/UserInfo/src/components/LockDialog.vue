@@ -73,13 +73,7 @@ const handleLock = async () => {
 </script>
 
 <template>
-  <Dialog
-    v-model="dialogVisible"
-    width="500px"
-    max-height="170px"
-    :class="prefixCls"
-    :title="dialogTitle"
-  >
+  <Dialog v-model="dialogVisible" width="500px" max-height="170px" :class="prefixCls" :title="dialogTitle">
     <div class="flex flex-col items-center">
       <img src="@/assets/imgs/avatar.jpg" alt="" class="w-70px h-70px rounded-[50%]" />
       <span class="text-14px my-10px text-[var(--top-header-text-color)]">Archer</span>

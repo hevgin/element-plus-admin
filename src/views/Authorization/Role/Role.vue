@@ -45,9 +45,7 @@ const tableColumns = reactive<TableColumn[]>([
       default: (data: any) => {
         return (
           <>
-            <ElTag type={data.row.status === 0 ? 'danger' : 'success'}>
-              {data.row.status === 1 ? t('userDemo.enable') : t('userDemo.disable')}
-            </ElTag>
+            <ElTag type={data.row.status === 0 ? 'danger' : 'success'}>{data.row.status === 1 ? t('userDemo.enable') : t('userDemo.disable')}</ElTag>
           </>
         )
       }
@@ -159,12 +157,7 @@ const save = async () => {
     <Detail v-else :current-row="currentRow" />
 
     <template #footer>
-      <BaseButton
-        v-if="actionType !== 'detail'"
-        type="primary"
-        :loading="saveLoading"
-        @click="save"
-      >
+      <BaseButton v-if="actionType !== 'detail'" type="primary" :loading="saveLoading" @click="save">
         {{ t('exampleDemo.save') }}
       </BaseButton>
       <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>

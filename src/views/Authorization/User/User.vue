@@ -205,8 +205,7 @@ const departmentList = ref<DepartmentItem[]>([])
 const fetchDepartment = async () => {
   const res = await getDepartmentApi()
   departmentList.value = res.data.list
-  currentNodeKey.value =
-    (res.data.list[0] && res.data.list[0]?.children && res.data.list[0].children[0].id) || ''
+  currentNodeKey.value = (res.data.list[0] && res.data.list[0]?.children && res.data.list[0].children[0].id) || ''
   await nextTick()
   unref(treeEl)?.setCurrentKey(currentNodeKey.value)
 }
@@ -250,9 +249,7 @@ const ids = ref<string[]>([])
 
 const delData = async (row?: DepartmentUserItem) => {
   const elTableExpose = await getElTableExpose()
-  ids.value = row
-    ? [row.id]
-    : elTableExpose?.getSelectionRows().map((v: DepartmentUserItem) => v.id) || []
+  ids.value = row ? [row.id] : elTableExpose?.getSelectionRows().map((v: DepartmentUserItem) => v.id) || []
   delLoading.value = true
 
   await delList(unref(ids).length).finally(() => {
@@ -297,12 +294,7 @@ const save = async () => {
     <ContentWrap class="w-250px">
       <div class="flex justify-center items-center">
         <div class="flex-1">{{ t('userDemo.departmentList') }}</div>
-        <ElInput
-          v-model="currentDepartment"
-          class="flex-[2]"
-          :placeholder="t('userDemo.searchDepartment')"
-          clearable
-        />
+        <ElInput v-model="currentDepartment" class="flex-[2]" :placeholder="t('userDemo.searchDepartment')" clearable />
       </div>
       <ElDivider />
       <ElTree
@@ -319,21 +311,14 @@ const save = async () => {
         @current-change="currentChange"
       >
         <template #default="{ data }">
-          <div
-            :title="data.departmentName"
-            class="whitespace-nowrap overflow-ellipsis overflow-hidden"
-          >
+          <div :title="data.departmentName" class="whitespace-nowrap overflow-ellipsis overflow-hidden">
             {{ data.departmentName }}
           </div>
         </template>
       </ElTree>
     </ContentWrap>
     <ContentWrap class="flex-[3] ml-20px">
-      <Search
-        :schema="allSchemas.searchSchema"
-        @reset="setSearchParams"
-        @search="setSearchParams"
-      />
+      <Search :schema="allSchemas.searchSchema" @reset="setSearchParams" @search="setSearchParams" />
 
       <div class="mb-10px">
         <BaseButton type="primary" @click="AddAction">{{ t('exampleDemo.add') }}</BaseButton>
@@ -355,26 +340,12 @@ const save = async () => {
     </ContentWrap>
 
     <Dialog v-model="dialogVisible" :title="dialogTitle">
-      <Write
-        v-if="actionType !== 'detail'"
-        ref="writeRef"
-        :form-schema="allSchemas.formSchema"
-        :current-row="currentRow"
-      />
+      <Write v-if="actionType !== 'detail'" ref="writeRef" :form-schema="allSchemas.formSchema" :current-row="currentRow" />
 
-      <Detail
-        v-if="actionType === 'detail'"
-        :detail-schema="allSchemas.detailSchema"
-        :current-row="currentRow"
-      />
+      <Detail v-if="actionType === 'detail'" :detail-schema="allSchemas.detailSchema" :current-row="currentRow" />
 
       <template #footer>
-        <BaseButton
-          v-if="actionType !== 'detail'"
-          type="primary"
-          :loading="saveLoading"
-          @click="save"
-        >
+        <BaseButton v-if="actionType !== 'detail'" type="primary" :loading="saveLoading" @click="save">
           {{ t('exampleDemo.save') }}
         </BaseButton>
         <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>

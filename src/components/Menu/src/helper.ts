@@ -13,10 +13,7 @@ export const getAllParentPath = <T = Recordable>(treeData: T[], path: string) =>
   return (menuList || []).map((item) => item.path)
 }
 
-export const hasOneShowingChild = (
-  children: AppRouteRecordRaw[] = [],
-  parent: AppRouteRecordRaw
-): HasOneShowingChild => {
+export const hasOneShowingChild = (children: AppRouteRecordRaw[] = [], parent: AppRouteRecordRaw): HasOneShowingChild => {
   const onlyOneChild = ref<OnlyOneChildType>()
 
   const showingChildren = children.filter((v) => {

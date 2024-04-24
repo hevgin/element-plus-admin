@@ -45,11 +45,7 @@ export default defineComponent({
       <>
         <div class="text-right h-28px flex items-center justify-end">
           <div title="刷新" class="w-30px h-20px flex items-center justify-end" onClick={refresh}>
-            <Icon
-              icon="ant-design:sync-outlined"
-              class="cursor-pointer"
-              hover-color="var(--el-color-primary)"
-            />
+            <Icon icon="ant-design:sync-outlined" class="cursor-pointer" hover-color="var(--el-color-primary)" />
           </div>
 
           <ElDropdown trigger="click" onCommand={changSize}>
@@ -57,11 +53,7 @@ export default defineComponent({
               default: () => {
                 return (
                   <div title="尺寸" class="w-30px h-20px flex items-center justify-end">
-                    <Icon
-                      icon="ant-design:column-height-outlined"
-                      class="cursor-pointer"
-                      hover-color="var(--el-color-primary)"
-                    />
+                    <Icon icon="ant-design:column-height-outlined" class="cursor-pointer" hover-color="var(--el-color-primary)" />
                   </div>
                 )
               },
@@ -85,16 +77,8 @@ export default defineComponent({
             }}
           </ElDropdown>
 
-          <div
-            title="列设置"
-            class="w-30px h-20px flex items-center justify-end"
-            onClick={showColumnSetting}
-          >
-            <Icon
-              icon="ant-design:setting-outlined"
-              class="cursor-pointer"
-              hover-color="var(--el-color-primary)"
-            />
+          <div title="列设置" class="w-30px h-20px flex items-center justify-end" onClick={showColumnSetting}>
+            <Icon icon="ant-design:setting-outlined" class="cursor-pointer" hover-color="var(--el-color-primary)" />
           </div>
         </div>
         <ColumnSetting v-model={showSetting.value} columns={props.columns} onConfirm={confirm} />

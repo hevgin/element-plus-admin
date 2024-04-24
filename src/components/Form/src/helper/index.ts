@@ -13,19 +13,8 @@ const { t } = useI18n()
  * @description 用于自动设置placeholder
  */
 export const setTextPlaceholder = (schema: FormSchema): PlaceholderModel => {
-  const textMap = [
-    ComponentNameEnum.INPUT,
-    ComponentNameEnum.AUTOCOMPLETE,
-    ComponentNameEnum.INPUT_NUMBER,
-    ComponentNameEnum.INPUT_PASSWORD
-  ]
-  const selectMap = [
-    ComponentNameEnum.SELECT,
-    ComponentNameEnum.TIME_PICKER,
-    ComponentNameEnum.DATE_PICKER,
-    ComponentNameEnum.TIME_SELECT,
-    ComponentNameEnum.SELECT_V2
-  ]
+  const textMap = [ComponentNameEnum.INPUT, ComponentNameEnum.AUTOCOMPLETE, ComponentNameEnum.INPUT_NUMBER, ComponentNameEnum.INPUT_PASSWORD]
+  const selectMap = [ComponentNameEnum.SELECT, ComponentNameEnum.TIME_PICKER, ComponentNameEnum.DATE_PICKER, ComponentNameEnum.TIME_SELECT, ComponentNameEnum.SELECT_V2]
   if (textMap.includes(schema?.component as ComponentNameEnum)) {
     return {
       placeholder: t('common.inputText')
@@ -34,12 +23,7 @@ export const setTextPlaceholder = (schema: FormSchema): PlaceholderModel => {
   if (selectMap.includes(schema?.component as ComponentNameEnum)) {
     // 一些范围选择器
     const twoTextMap = ['datetimerange', 'daterange', 'monthrange', 'datetimerange', 'daterange']
-    if (
-      twoTextMap.includes(
-        ((schema?.componentProps as any)?.type ||
-          (schema?.componentProps as any)?.isRange) as string
-      )
-    ) {
+    if (twoTextMap.includes(((schema?.componentProps as any)?.type || (schema?.componentProps as any)?.isRange) as string)) {
       return {
         startPlaceholder: t('common.startTimeText'),
         endPlaceholder: t('common.endTimeText'),
@@ -150,11 +134,7 @@ export const initModel = (schema: FormSchema[], formModel: Recordable) => {
       // const hasField = Reflect.has(model, v.field)
       const hasField = get(model, v.field)
       // 如果先前已经有值存在，则不进行重新赋值，而是采用现有的值
-      set(
-        model,
-        v.field,
-        hasField !== void 0 ? get(model, v.field) : v.value !== void 0 ? v.value : undefined
-      )
+      set(model, v.field, hasField !== void 0 ? get(model, v.field) : v.value !== void 0 ? v.value : undefined)
       // model[v.field] = hasField ? model[v.field] : v.value !== void 0 ? v.value : undefined
     }
   })

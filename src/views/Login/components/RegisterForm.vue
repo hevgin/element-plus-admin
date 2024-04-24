@@ -101,12 +101,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <div class="w-[100%] flex">
               <ElInput v-model={formData.code} placeholder={t('login.codePlaceholder')} />
-              <BaseButton
-                type="primary"
-                disabled={unref(getCodeLoading)}
-                class="ml-10px"
-                onClick={getCode}
-              >
+              <BaseButton type="primary" disabled={unref(getCodeLoading)} class="ml-10px" onClick={getCode}>
                 {t('login.getCode')}
                 {unref(getCodeLoading) ? `(${unref(getCodeTime)})` : ''}
               </BaseButton>
@@ -154,12 +149,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <div class="w-[100%]">
-                <BaseButton
-                  type="primary"
-                  class="w-[100%]"
-                  loading={loading.value}
-                  onClick={loginRegister}
-                >
+                <BaseButton type="primary" class="w-[100%]" loading={loading.value} onClick={loginRegister}>
                   {t('login.register')}
                 </BaseButton>
               </div>
@@ -206,13 +196,5 @@ const loginRegister = async () => {
 </script>
 
 <template>
-  <Form
-    :schema="schema"
-    :rules="rules"
-    label-position="top"
-    hide-required-asterisk
-    size="large"
-    class="dark:(border-1 border-[var(--el-border-color)] border-solid)"
-    @register="formRegister"
-  />
+  <Form :schema="schema" :rules="rules" label-position="top" hide-required-asterisk size="large" class="dark:(border-1 border-[var(--el-border-color)] border-solid)" @register="formRegister" />
 </template>

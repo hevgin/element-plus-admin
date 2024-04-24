@@ -5,18 +5,7 @@ import { useI18n } from '@/hooks/web/useI18n'
 import { ContentWrap } from '@/components/ContentWrap'
 import { useAppStore } from '@/store/modules/app'
 import { SelectOption, RadioOption, CheckboxOption, FormSchema } from '@/components/Form'
-import {
-  ElOption,
-  ElOptionGroup,
-  ElRadio,
-  ElRadioButton,
-  ElCheckbox,
-  ElCheckboxButton,
-  ElInput,
-  ElMessage,
-  ElMessageBox,
-  ElIcon
-} from 'element-plus'
+import { ElOption, ElOptionGroup, ElRadio, ElRadioButton, ElCheckbox, ElCheckboxButton, ElInput, ElMessage, ElMessageBox, ElIcon } from 'element-plus'
 import { getDictOneApi } from '@/api/common'
 import { Icon } from '@/components/Icon'
 import { BaseButton } from '@/components/Button'
@@ -29,17 +18,13 @@ const isMobile = computed(() => appStore.getMobile)
 
 const restaurants = ref<Recordable[]>([])
 const querySearch = (queryString: string, cb: Fn) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter(queryString))
-    : restaurants.value
+  const results = queryString ? restaurants.value.filter(createFilter(queryString)) : restaurants.value
   // call callback function to return suggestions
   cb(results)
 }
 let timeout: NodeJS.Timeout
 const querySearchAsync = (queryString: string, cb: (arg: any) => void) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter(queryString))
-    : restaurants.value
+  const results = queryString ? restaurants.value.filter(createFilter(queryString)) : restaurants.value
 
   clearTimeout(timeout)
   timeout = setTimeout(() => {
@@ -357,15 +342,7 @@ const generateData = () => {
   return data
 }
 
-const holidays = [
-  '2021-10-01',
-  '2021-10-02',
-  '2021-10-03',
-  '2021-10-04',
-  '2021-10-05',
-  '2021-10-06',
-  '2021-10-07'
-]
+const holidays = ['2021-10-01', '2021-10-02', '2021-10-03', '2021-10-04', '2021-10-05', '2021-10-06', '2021-10-07']
 
 const isHoliday = ({ dayjs }) => {
   return holidays.includes(dayjs.format('YYYY-MM-DD'))
@@ -676,9 +653,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <span style="float: left">{option.label}</span>
-              <span style="float: right; color: var(--el-text-color-secondary); font-size: 13px;">
-                {option.value}
-              </span>
+              <span style="float: right; color: var(--el-text-color-secondary); font-size: 13px;">{option.value}</span>
             </>
           )
         }
@@ -792,9 +767,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <span style="margin-right: 8px">{option?.label}</span>
-              <span style="color: var(--el-text-color-secondary); font-size: 13px">
-                {option?.value}
-              </span>
+              <span style="color: var(--el-text-color-secondary); font-size: 13px">{option?.value}</span>
             </>
           )
         }
@@ -820,9 +793,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <span style="margin-right: 8px">{option?.label}</span>
-              <span style="color: var(--el-text-color-secondary); font-size: 13px">
-                {option?.value}
-              </span>
+              <span style="color: var(--el-text-color-secondary); font-size: 13px">{option?.value}</span>
             </>
           )
         }
@@ -902,11 +873,7 @@ const schema = reactive<FormSchema[]>([
     value: null,
     componentProps: {
       voidIcon: <Icon icon="ep:chat-round" />,
-      icons: [
-        <Icon icon="ep:chat-round" />,
-        <Icon icon="ep:chat-line-round" />,
-        <Icon icon="ep:chat-dot-round" />
-      ]
+      icons: [<Icon icon="ep:chat-round" />, <Icon icon="ep:chat-line-round" />, <Icon icon="ep:chat-dot-round" />]
     }
   },
   {
@@ -1699,11 +1666,7 @@ const schema = reactive<FormSchema[]>([
         )
       },
       onExceed: (files, uploadFiles) => {
-        ElMessage.warning(
-          `The limit is 3, you selected ${files.length} files this time, add up to ${
-            files.length + uploadFiles.length
-          } totally`
-        )
+        ElMessage.warning(`The limit is 3, you selected ${files.length} files this time, add up to ${files.length + uploadFiles.length} totally`)
       },
       slots: {
         default: () => <BaseButton type="primary">Click to upload</BaseButton>,

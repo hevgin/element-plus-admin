@@ -38,12 +38,7 @@ const columns: TableColumn[] = [
         {
           type: cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'
         },
-        () =>
-          cellValue === 1
-            ? t('tableDemo.important')
-            : cellValue === 2
-              ? t('tableDemo.good')
-              : t('tableDemo.commonly')
+        () => (cellValue === 1 ? t('tableDemo.important') : cellValue === 2 ? t('tableDemo.good') : t('tableDemo.commonly'))
       )
     }
   },
@@ -95,11 +90,6 @@ const actionFn = (data: any) => {
 
 <template>
   <ContentWrap :title="t('tableDemo.table')" :message="t('tableDemo.tableDes')">
-    <Table
-      :columns="columns"
-      :data="tableDataList"
-      :loading="loading"
-      :defaultSort="{ prop: 'display_time', order: 'descending' }"
-    />
+    <Table :columns="columns" :data="tableDataList" :loading="loading" :defaultSort="{ prop: 'display_time', order: 'descending' }" />
   </ContentWrap>
 </template>

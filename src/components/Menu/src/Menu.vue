@@ -40,9 +40,7 @@ export default defineComponent({
       }
     })
 
-    const routers = computed(() =>
-      unref(layout) === 'cutMenu' ? permissionStore.getMenuTabRouters : permissionStore.getRouters
-    )
+    const routers = computed(() => (unref(layout) === 'cutMenu' ? permissionStore.getMenuTabRouters : permissionStore.getRouters))
 
     const collapse = computed(() => appStore.getCollapse)
 
@@ -82,18 +80,12 @@ export default defineComponent({
         <ElMenu
           defaultActive={unref(activeMenu)}
           mode={unref(menuMode)}
-          collapse={
-            unref(layout) === 'top' || unref(layout) === 'cutMenu' ? false : unref(collapse)
-          }
+          collapse={unref(layout) === 'top' || unref(layout) === 'cutMenu' ? false : unref(collapse)}
           uniqueOpened={unref(layout) === 'top' ? false : unref(uniqueOpened)}
           backgroundColor="var(--left-menu-bg-color)"
           textColor="var(--left-menu-text-color)"
           activeTextColor="var(--left-menu-text-active-color)"
-          popperClass={
-            unref(menuMode) === 'vertical'
-              ? `${prefixCls}-popper--vertical`
-              : `${prefixCls}-popper--horizontal`
-          }
+          popperClass={unref(menuMode) === 'vertical' ? `${prefixCls}-popper--vertical` : `${prefixCls}-popper--horizontal`}
           onSelect={menuSelect}
         >
           {{

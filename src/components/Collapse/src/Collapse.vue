@@ -24,11 +24,6 @@ const toggleCollapse = () => {
 
 <template>
   <div :class="prefixCls" @click="toggleCollapse">
-    <Icon
-      :size="18"
-      :icon="collapse ? 'ant-design:menu-unfold-outlined' : 'ant-design:menu-fold-outlined'"
-      :color="color"
-      class="cursor-pointer"
-    />
+    <Icon :size="18" :icon="collapse ? 'ant-design:menu-unfold-outlined' : 'ant-design:menu-fold-outlined'" :color="color" class="cursor-pointer" />
   </div>
 </template>

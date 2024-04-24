@@ -57,8 +57,7 @@ export const useTagsViewStore = defineStore('tagsView', {
         const name = item.name as string
         cacheMap.add(name)
       }
-      if (Array.from(this.cachedViews).sort().toString() === Array.from(cacheMap).sort().toString())
-        return
+      if (Array.from(this.cachedViews).sort().toString() === Array.from(cacheMap).sort().toString()) return
       this.cachedViews = cacheMap
     },
     // 删除某个
@@ -93,9 +92,7 @@ export const useTagsViewStore = defineStore('tagsView', {
       const userStore = useUserStoreWithOut()
 
       // const affixTags = this.visitedViews.filter((tag) => tag.meta.affix)
-      this.visitedViews = userStore.getUserInfo
-        ? this.visitedViews.filter((tag) => tag?.meta?.affix)
-        : []
+      this.visitedViews = userStore.getUserInfo ? this.visitedViews.filter((tag) => tag?.meta?.affix) : []
     },
     // 删除其它
     delOthersViews(view: RouteLocationNormalizedLoaded) {
@@ -110,10 +107,7 @@ export const useTagsViewStore = defineStore('tagsView', {
     },
     // 删除左侧
     delLeftViews(view: RouteLocationNormalizedLoaded) {
-      const index = findIndex<RouteLocationNormalizedLoaded>(
-        this.visitedViews,
-        (v) => v.path === view.path
-      )
+      const index = findIndex<RouteLocationNormalizedLoaded>(this.visitedViews, (v) => v.path === view.path)
       if (index > -1) {
         this.visitedViews = this.visitedViews.filter((v, i) => {
           return v?.meta?.affix || v.path === view.path || i > index
@@ -123,10 +117,7 @@ export const useTagsViewStore = defineStore('tagsView', {
     },
     // 删除右侧
     delRightViews(view: RouteLocationNormalizedLoaded) {
-      const index = findIndex<RouteLocationNormalizedLoaded>(
-        this.visitedViews,
-        (v) => v.path === view.path
-      )
+      const index = findIndex<RouteLocationNormalizedLoaded>(this.visitedViews, (v) => v.path === view.path)
       if (index > -1) {
         this.visitedViews = this.visitedViews.filter((v, i) => {
           return v?.meta?.affix || v.path === view.path || i < index

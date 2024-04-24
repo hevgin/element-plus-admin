@@ -5,12 +5,7 @@ import { Dialog } from '@/components/Dialog'
 import { useI18n } from '@/hooks/web/useI18n'
 import { ElTag } from 'element-plus'
 import { Table } from '@/components/Table'
-import {
-  getDepartmentApi,
-  getDepartmentTableApi,
-  saveDepartmentApi,
-  deleteDepartmentApi
-} from '@/api/department'
+import { getDepartmentApi, getDepartmentTableApi, saveDepartmentApi, deleteDepartmentApi } from '@/api/department'
 import type { DepartmentItem } from '@/api/department/types'
 import { useTable } from '@/hooks/web/useTable'
 import { ref, unref, reactive } from 'vue'
@@ -123,9 +118,7 @@ const crudSchemas = reactive<CrudSchema[]>([
           const status = data.row.status
           return (
             <>
-              <ElTag type={status === 0 ? 'danger' : 'success'}>
-                {status === 1 ? t('userDemo.enable') : t('userDemo.disable')}
-              </ElTag>
+              <ElTag type={status === 0 ? 'danger' : 'success'}>{status === 1 ? t('userDemo.enable') : t('userDemo.disable')}</ElTag>
             </>
           )
         }
@@ -151,9 +144,7 @@ const crudSchemas = reactive<CrudSchema[]>([
         default: (data: any) => {
           return (
             <>
-              <ElTag type={data.status === 0 ? 'danger' : 'success'}>
-                {data.status === 1 ? t('userDemo.enable') : t('userDemo.disable')}
-              </ElTag>
+              <ElTag type={data.status === 0 ? 'danger' : 'success'}>{data.status === 1 ? t('userDemo.enable') : t('userDemo.disable')}</ElTag>
             </>
           )
         }
@@ -249,9 +240,7 @@ const delLoading = ref(false)
 
 const delData = async (row: DepartmentItem | null) => {
   const elTableExpose = await getElTableExpose()
-  ids.value = row
-    ? [row.id]
-    : elTableExpose?.getSelectionRows().map((v: DepartmentItem) => v.id) || []
+  ids.value = row ? [row.id] : elTableExpose?.getSelectionRows().map((v: DepartmentItem) => v.id) || []
   delLoading.value = true
   await delList(unref(ids).length).finally(() => {
     delLoading.value = false
@@ -313,26 +302,12 @@ const save = async () => {
   </ContentWrap>
 
   <Dialog v-model="dialogVisible" :title="dialogTitle">
-    <Write
-      v-if="actionType !== 'detail'"
-      ref="writeRef"
-      :form-schema="allSchemas.formSchema"
-      :current-row="currentRow"
-    />
+    <Write v-if="actionType !== 'detail'" ref="writeRef" :form-schema="allSchemas.formSchema" :current-row="currentRow" />
 
-    <Detail
-      v-if="actionType === 'detail'"
-      :detail-schema="allSchemas.detailSchema"
-      :current-row="currentRow"
-    />
+    <Detail v-if="actionType === 'detail'" :detail-schema="allSchemas.detailSchema" :current-row="currentRow" />
 
     <template #footer>
-      <BaseButton
-        v-if="actionType !== 'detail'"
-        type="primary"
-        :loading="saveLoading"
-        @click="save"
-      >
+      <BaseButton v-if="actionType !== 'detail'" type="primary" :loading="saveLoading" @click="save">
         {{ t('exampleDemo.save') }}
       </BaseButton>
       <BaseButton @click="dialogVisible = false">{{ t('dialogDemo.close') }}</BaseButton>

@@ -107,13 +107,7 @@ const style = computed(() => {
 </script>
 
 <template>
-  <ElButton
-    :class="`${prefixCls} color-#fff`"
-    v-bind="{ ...props }"
-    :color="color"
-    :style="style"
-    @click="() => emits('click')"
-  >
+  <ElButton :class="`${prefixCls} color-#fff`" v-bind="{ ...props }" :color="color" :style="style" @click="() => emits('click')">
     <slot></slot>
     <slot name="icon"></slot>
     <slot name="loading"></slot>

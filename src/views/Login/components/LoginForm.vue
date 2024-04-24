@@ -108,12 +108,7 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <div class="w-[100%]">
-                <BaseButton
-                  loading={loading.value}
-                  type="primary"
-                  class="w-[100%]"
-                  onClick={signIn}
-                >
+                <BaseButton loading={loading.value} type="primary" class="w-[100%]" onClick={signIn}>
                   {t('login.login')}
                 </BaseButton>
               </div>
@@ -147,34 +142,10 @@ const schema = reactive<FormSchema[]>([
           return (
             <>
               <div class="flex justify-between w-[100%]">
-                <Icon
-                  icon="ant-design:github-filled"
-                  size={iconSize}
-                  class="cursor-pointer ant-icon"
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                />
-                <Icon
-                  icon="ant-design:wechat-filled"
-                  size={iconSize}
-                  class="cursor-pointer ant-icon"
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                />
-                <Icon
-                  icon="ant-design:alipay-circle-filled"
-                  size={iconSize}
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                  class="cursor-pointer ant-icon"
-                />
-                <Icon
-                  icon="ant-design:weibo-circle-filled"
-                  size={iconSize}
-                  color={iconColor}
-                  hoverColor={hoverColor}
-                  class="cursor-pointer ant-icon"
-                />
+                <Icon icon="ant-design:github-filled" size={iconSize} class="cursor-pointer ant-icon" color={iconColor} hoverColor={hoverColor} />
+                <Icon icon="ant-design:wechat-filled" size={iconSize} class="cursor-pointer ant-icon" color={iconColor} hoverColor={hoverColor} />
+                <Icon icon="ant-design:alipay-circle-filled" size={iconSize} color={iconColor} hoverColor={hoverColor} class="cursor-pointer ant-icon" />
+                <Icon icon="ant-design:weibo-circle-filled" size={iconSize} color={iconColor} hoverColor={hoverColor} class="cursor-pointer ant-icon" />
               </div>
             </>
           )
@@ -268,16 +239,11 @@ const getRole = async () => {
   const params = {
     roleName: formData.username
   }
-  const res =
-    appStore.getDynamicRouter && appStore.getServerDynamicRouter
-      ? await getAdminRoleApi(params)
-      : await getTestRoleApi(params)
+  const res = appStore.getDynamicRouter && appStore.getServerDynamicRouter ? await getAdminRoleApi(params) : await getTestRoleApi(params)
   if (res) {
     const routers = res.data || []
     userStore.setRoleRouters(routers)
-    appStore.getDynamicRouter && appStore.getServerDynamicRouter
-      ? await permissionStore.generateRoutes('server', routers).catch(() => {})
-      : await permissionStore.generateRoutes('frontEnd', routers).catch(() => {})
+    appStore.getDynamicRouter && appStore.getServerDynamicRouter ? await permissionStore.generateRoutes('server', routers).catch(() => {}) : await permissionStore.generateRoutes('frontEnd', routers).catch(() => {})
 
     permissionStore.getAddRouters.forEach((route) => {
       addRoute(route as RouteRecordRaw) // 动态添加可访问路由表
@@ -294,13 +260,5 @@ const toRegister = () => {
 </script>
 
 <template>
-  <Form
-    :schema="schema"
-    :rules="rules"
-    label-position="top"
-    hide-required-asterisk
-    size="large"
-    class="dark:(border-1 border-[var(--el-border-color)] border-solid)"
-    @register="formRegister"
-  />
+  <Form :schema="schema" :rules="rules" label-position="top" hide-required-asterisk size="large" class="dark:(border-1 border-[var(--el-border-color)] border-solid)" @register="formRegister" />
 </template>

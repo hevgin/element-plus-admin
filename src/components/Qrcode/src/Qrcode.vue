@@ -60,15 +60,10 @@ const initQrcode = async () => {
   const options = cloneDeep(props.options || {})
   if (props.tag === 'canvas') {
     // 容错率，默认对内容少的二维码采用高容错率，内容多的二维码采用低容错率
-    options.errorCorrectionLevel =
-      options.errorCorrectionLevel || getErrorCorrectionLevel(unref(renderText))
+    options.errorCorrectionLevel = options.errorCorrectionLevel || getErrorCorrectionLevel(unref(renderText))
     const _width: number = await getOriginWidth(unref(renderText), options)
     options.scale = props.width === 0 ? undefined : (props.width / _width) * 4
-    const canvasRef = (await toCanvas(
-      unref(wrapRef) as HTMLCanvasElement,
-      unref(renderText),
-      options
-    )) as unknown as HTMLCanvasElement
+    const canvasRef = (await toCanvas(unref(wrapRef) as HTMLCanvasElement, unref(renderText), options)) as unknown as HTMLCanvasElement
     if (props.logo) {
       const url = await createLogoCode(canvasRef)
       emit('done', url)
@@ -114,14 +109,7 @@ const createLogoCode = (canvasRef: HTMLCanvasElement) => {
     },
     isString(props.logo) ? {} : props.logo
   )
-  const {
-    logoSize = 0.15,
-    bgColor = '#ffffff',
-    borderSize = 0.05,
-    crossOrigin = 'anonymous',
-    borderRadius = 8,
-    logoRadius = 0
-  } = logoOptions
+  const { logoSize = 0.15, bgColor = '#ffffff', borderSize = 0.05, crossOrigin = 'anonymous', borderRadius = 8, logoRadius = 0 } = logoOptions
   const logoSrc = isString(props.logo) ? props.logo : props.logo.src
   const logoWidth = canvasWidth * logoSize
   const logoXY = (canvasWidth * (1 - logoSize)) / 2
@@ -223,12 +211,7 @@ const disabledClick = () => {
 <template>
   <div v-loading="loading" :class="[prefixCls, 'relative inline-block']" :style="wrapStyle">
     <component :is="tag" ref="wrapRef" @click="clickCode" />
-    <div
-      v-if="disabled"
-      :class="`${prefixCls}--disabled`"
-      class="absolute top-0 left-0 flex w-full h-full items-center justify-center"
-      @click="disabledClick"
-    >
+    <div v-if="disabled" :class="`${prefixCls}--disabled`" class="absolute top-0 left-0 flex w-full h-full items-center justify-center" @click="disabledClick">
       <div class="absolute top-[50%] left-[50%] font-bold">
         <Icon icon="ep:refresh-right" :size="30" color="var(--el-color-primary)" />
         <div>{{ disabledText }}</div>

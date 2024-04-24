@@ -5,8 +5,7 @@ import { useRouter } from 'vue-router'
 
 const { push } = useRouter()
 
-const { closeAll, closeLeft, closeRight, closeOther, closeCurrent, refreshPage, setTitle } =
-  useTagsView()
+const { closeAll, closeLeft, closeRight, closeOther, closeCurrent, refreshPage, setTitle } = useTagsView()
 
 const closeAllTabs = () => {
   closeAll(() => {

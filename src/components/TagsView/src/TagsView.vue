@@ -81,10 +81,7 @@ const toLastView = () => {
   if (latestView) {
     push(latestView)
   } else {
-    if (
-      unref(currentRoute).path === permissionStore.getAddRouters[0].path ||
-      unref(currentRoute).path === permissionStore.getAddRouters[0].redirect
-    ) {
+    if (unref(currentRoute).path === permissionStore.getAddRouters[0].path || unref(currentRoute).path === permissionStore.getAddRouters[0].redirect) {
       addTags()
       return
     }
@@ -168,9 +165,7 @@ const moveToTarget = (currentTag: RouteLocationNormalizedLoaded) => {
     start()
   } else {
     // find preTag and nextTag
-    const currentIndex: number = tagList.findIndex(
-      (item) => (item?.to as RouteLocationNormalizedLoaded).fullPath === currentTag.fullPath
-    )
+    const currentIndex: number = tagList.findIndex((item) => (item?.to as RouteLocationNormalizedLoaded).fullPath === currentTag.fullPath)
     const tgsRefs = document.getElementsByClassName(`${prefixCls}__item`)
 
     const prevTag = tgsRefs[currentIndex - 1] as HTMLElement
@@ -246,10 +241,7 @@ const move = (to: number) => {
 }
 
 const canShowIcon = (item: RouteLocationNormalizedLoaded) => {
-  if (
-    (item?.matched?.[1]?.meta?.icon && unref(tagsViewIcon)) ||
-    (item?.meta?.affix && unref(tagsViewIcon) && item?.meta?.icon)
-  ) {
+  if ((item?.matched?.[1]?.meta?.icon && unref(tagsViewIcon)) || (item?.meta?.affix && unref(tagsViewIcon) && item?.meta?.icon)) {
     return true
   }
   return false
@@ -270,21 +262,9 @@ watch(
 </script>
 
 <template>
-  <div
-    :id="prefixCls"
-    :class="prefixCls"
-    class="flex w-full relative bg-[#fff] dark:bg-[var(--el-bg-color)]"
-  >
-    <span
-      :class="`${prefixCls}__tool ${prefixCls}__tool--first`"
-      class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer"
-      @click="move(-200)"
-    >
-      <Icon
-        icon="ep:d-arrow-left"
-        color="var(--el-text-color-placeholder)"
-        :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
-      />
+  <div :id="prefixCls" :class="prefixCls" class="flex w-full relative bg-[#fff] dark:bg-[var(--el-bg-color)]">
+    <span :class="`${prefixCls}__tool ${prefixCls}__tool--first`" class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer" @click="move(-200)">
+      <Icon icon="ep:d-arrow-left" color="var(--el-text-color-placeholder)" :hover-color="isDark ? '#fff' : 'var(--el-color-black)'" />
     </span>
     <div class="overflow-hidden flex-1">
       <ElScrollbar ref="scrollbarRef" class="h-full" @scroll="scroll">
@@ -312,10 +292,7 @@ watch(
                 divided: true,
                 icon: 'ant-design:vertical-right-outlined',
                 label: t('common.closeTheLeftTab'),
-                disabled:
-                  !!visitedViews?.length &&
-                  (item.fullPath === visitedViews[0].fullPath ||
-                    selectedTag?.fullPath !== item.fullPath),
+                disabled: !!visitedViews?.length && (item.fullPath === visitedViews[0].fullPath || selectedTag?.fullPath !== item.fullPath),
                 command: () => {
                   closeLeftTags()
                 }
@@ -323,10 +300,7 @@ watch(
               {
                 icon: 'ant-design:vertical-left-outlined',
                 label: t('common.closeTheRightTab'),
-                disabled:
-                  !!visitedViews?.length &&
-                  (item.fullPath === visitedViews[visitedViews.length - 1].fullPath ||
-                    selectedTag?.fullPath !== item.fullPath),
+                disabled: !!visitedViews?.length && (item.fullPath === visitedViews[visitedViews.length - 1].fullPath || selectedTag?.fullPath !== item.fullPath),
                 command: () => {
                   closeRightTags()
                 }
@@ -362,24 +336,10 @@ watch(
           >
             <div>
               <router-link :ref="tagLinksRefs.set" :to="{ ...item }" custom v-slot="{ navigate }">
-                <div
-                  @click="navigate"
-                  class="h-full flex justify-center items-center whitespace-nowrap pl-15px"
-                >
-                  <Icon
-                    v-if="canShowIcon(item)"
-                    :icon="item?.matched?.[1]?.meta?.icon || item?.meta?.icon"
-                    :size="12"
-                    class="mr-5px"
-                  />
+                <div @click="navigate" class="h-full flex justify-center items-center whitespace-nowrap pl-15px">
+                  <Icon v-if="canShowIcon(item)" :icon="item?.matched?.[1]?.meta?.icon || item?.meta?.icon" :size="12" class="mr-5px" />
                   {{ t(item?.meta?.title as string) }}
-                  <Icon
-                    :class="`${prefixCls}__item--close`"
-                    color="#333"
-                    icon="ant-design:close-outlined"
-                    :size="12"
-                    @click.prevent.stop="closeSelectedTag(item)"
-                  />
+                  <Icon :class="`${prefixCls}__item--close`" color="#333" icon="ant-design:close-outlined" :size="12" @click.prevent.stop="closeSelectedTag(item)" />
                 </div>
               </router-link>
             </div>
@@ -387,27 +347,11 @@ watch(
         </div>
       </ElScrollbar>
     </div>
-    <span
-      :class="`${prefixCls}__tool`"
-      class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer"
-      @click="move(200)"
-    >
-      <Icon
-        icon="ep:d-arrow-right"
-        color="var(--el-text-color-placeholder)"
-        :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
-      />
+    <span :class="`${prefixCls}__tool`" class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer" @click="move(200)">
+      <Icon icon="ep:d-arrow-right" color="var(--el-text-color-placeholder)" :hover-color="isDark ? '#fff' : 'var(--el-color-black)'" />
     </span>
-    <span
-      :class="`${prefixCls}__tool`"
-      class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer"
-      @click="refreshSelectedTag(selectedTag)"
-    >
-      <Icon
-        icon="ant-design:reload-outlined"
-        color="var(--el-text-color-placeholder)"
-        :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
-      />
+    <span :class="`${prefixCls}__tool`" class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer" @click="refreshSelectedTag(selectedTag)">
+      <Icon icon="ant-design:reload-outlined" color="var(--el-text-color-placeholder)" :hover-color="isDark ? '#fff' : 'var(--el-color-black)'" />
     </span>
     <ContextMenu
       trigger="click"
@@ -439,9 +383,7 @@ watch(
         {
           icon: 'ant-design:vertical-left-outlined',
           label: t('common.closeTheRightTab'),
-          disabled:
-            !!visitedViews?.length &&
-            selectedTag?.fullPath === visitedViews[visitedViews.length - 1].fullPath,
+          disabled: !!visitedViews?.length && selectedTag?.fullPath === visitedViews[visitedViews.length - 1].fullPath,
           command: () => {
             closeRightTags()
           }
@@ -463,15 +405,8 @@ watch(
         }
       ]"
     >
-      <span
-        :class="`${prefixCls}__tool`"
-        class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer block"
-      >
-        <Icon
-          icon="ant-design:setting-outlined"
-          color="var(--el-text-color-placeholder)"
-          :hover-color="isDark ? '#fff' : 'var(--el-color-black)'"
-        />
+      <span :class="`${prefixCls}__tool`" class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] flex items-center justify-center cursor-pointer block">
+        <Icon icon="ant-design:setting-outlined" color="var(--el-text-color-placeholder)" :hover-color="isDark ? '#fff' : 'var(--el-color-black)'" />
       </span>
     </ContextMenu>
   </div>

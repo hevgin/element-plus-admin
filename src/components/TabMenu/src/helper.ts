@@ -18,10 +18,7 @@ export const initTabMap = (routes: AppRouteRecordRaw[]) => {
   }
 }
 
-export const filterMenusPath = (
-  routes: AppRouteRecordRaw[],
-  allRoutes: AppRouteRecordRaw[]
-): AppRouteRecordRaw[] => {
+export const filterMenusPath = (routes: AppRouteRecordRaw[], allRoutes: AppRouteRecordRaw[]): AppRouteRecordRaw[] => {
   const res: AppRouteRecordRaw[] = []
   for (const v of routes) {
     let data: Nullable<AppRouteRecordRaw> = null

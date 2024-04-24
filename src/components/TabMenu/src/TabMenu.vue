@@ -46,11 +46,7 @@ export default defineComponent({
     onMounted(() => {
       if (unref(fixedMenu)) {
         const path = `/${unref(currentRoute).path.split('/')[1]}`
-        const children = unref(tabRouters).find(
-          (v) =>
-            (v.meta?.alwaysShow || (v?.children?.length && v?.children?.length > 1)) &&
-            v.path === path
-        )?.children
+        const children = unref(tabRouters).find((v) => (v.meta?.alwaysShow || (v?.children?.length && v?.children?.length > 1)) && v.path === path)?.children
 
         tabActive.value = path
         if (children) {
@@ -185,22 +181,14 @@ export default defineComponent({
                     <div>
                       <Icon icon={item?.meta?.icon}></Icon>
                     </div>
-                    {!unref(showTitle) ? undefined : (
-                      <p class="break-words mt-5px px-2px">{t(item.meta?.title || '')}</p>
-                    )}
+                    {!unref(showTitle) ? undefined : <p class="break-words mt-5px px-2px">{t(item.meta?.title || '')}</p>}
                   </div>
                 )
               })
             }}
           </div>
         </ElScrollbar>
-        <div
-          class={[
-            `${prefixCls}--collapse`,
-            'text-center h-[var(--tab-menu-collapse-height)] leading-[var(--tab-menu-collapse-height)] cursor-pointer'
-          ]}
-          onClick={setCollapse}
-        >
+        <div class={[`${prefixCls}--collapse`, 'text-center h-[var(--tab-menu-collapse-height)] leading-[var(--tab-menu-collapse-height)] cursor-pointer']} onClick={setCollapse}>
           <Icon icon={unref(collapse) ? 'ep:d-arrow-right' : 'ep:d-arrow-left'}></Icon>
         </div>
         <Menu
@@ -209,8 +197,7 @@ export default defineComponent({
             {
               '!left-[var(--tab-menu-min-width)]': unref(collapse),
               '!left-[var(--tab-menu-max-width)]': !unref(collapse),
-              '!w-[var(--left-menu-max-width)] border-r-1 border-r-solid border-[var(--el-border-color)]':
-                unref(showMenu) || unref(fixedMenu),
+              '!w-[var(--left-menu-max-width)] border-r-1 border-r-solid border-[var(--el-border-color)]': unref(showMenu) || unref(fixedMenu),
               '!w-0': !unref(showMenu) && !unref(fixedMenu)
             }
           ]}

@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import {
-  ElDrawer,
-  ElCheckbox,
-  ElCheckboxGroup,
-  ElText,
-  ElRadioButton,
-  ElRadioGroup
-} from 'element-plus'
+import { ElDrawer, ElCheckbox, ElCheckboxGroup, ElText, ElRadioButton, ElRadioGroup } from 'element-plus'
 import { TableColumn } from '../types'
 import { PropType, ref, watch, unref } from 'vue'
 import { cloneDeep } from 'lodash-es'
@@ -74,9 +67,7 @@ const initColumns = (columns: TableColumn[], isReStore = false) => {
   }
   settingColumns.value = cloneDeep(newColumns)
 
-  hiddenColumns.value = cloneDeep(
-    columns?.filter((item) => item.type && DEFAULT_FILTER_COLUMN.includes(item.type))
-  )
+  hiddenColumns.value = cloneDeep(columns?.filter((item) => item.type && DEFAULT_FILTER_COLUMN.includes(item.type)))
 
   defaultCheckColumns.value = unref(settingColumns)?.map((item) => item.field) || []
   checkColumns.value =
@@ -107,32 +98,15 @@ watch(
     <div>
       <div class="flex items-center justify-between">
         <div class="flex items-center justify-between">
-          <ElCheckbox
-            v-model="checkAll"
-            :indeterminate="isIndeterminate"
-            @change="handleCheckAllChange"
-          />
+          <ElCheckbox v-model="checkAll" :indeterminate="isIndeterminate" @change="handleCheckAllChange" />
           <ElText class="ml-8px!">{{ checkColumns.length }} / {{ settingColumns?.length }}</ElText>
         </div>
         <ElText>固定 / 排序</ElText>
       </div>
       <div v-if="settingColumns?.length">
-        <VueDraggable
-          v-model="settingColumns"
-          target=".el-checkbox-group"
-          handle=".handle"
-          :animation="150"
-        >
-          <ElCheckboxGroup
-            ref="draggableWrap"
-            v-model="checkColumns"
-            @change="handleCheckedColumnsChange"
-          >
-            <div
-              v-for="item in settingColumns"
-              :key="item.field"
-              class="flex items-center justify-between mt-12px"
-            >
+        <VueDraggable v-model="settingColumns" target=".el-checkbox-group" handle=".handle" :animation="150">
+          <ElCheckboxGroup ref="draggableWrap" v-model="checkColumns" @change="handleCheckedColumnsChange">
+            <div v-for="item in settingColumns" :key="item.field" class="flex items-center justify-between mt-12px">
               <ElCheckbox :label="item.field">
                 {{ item.label }}
               </ElCheckbox>

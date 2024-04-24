@@ -37,34 +37,17 @@ export default defineComponent({
   name: 'ToolHeader',
   setup() {
     return () => (
-      <div
-        id={`${variables.namespace}-tool-header`}
-        class={[
-          prefixCls,
-          'h-[var(--top-tool-height)] relative px-[var(--top-tool-p-x)] flex items-center justify-between'
-        ]}
-      >
+      <div id={`${variables.namespace}-tool-header`} class={[prefixCls, 'h-[var(--top-tool-height)] relative px-[var(--top-tool-p-x)] flex items-center justify-between']}>
         {layout.value !== 'top' ? (
           <div class="h-full flex items-center">
-            {hamburger.value && layout.value !== 'cutMenu' ? (
-              <Collapse class="custom-hover" color="var(--top-header-text-color)"></Collapse>
-            ) : undefined}
+            {hamburger.value && layout.value !== 'cutMenu' ? <Collapse class="custom-hover" color="var(--top-header-text-color)"></Collapse> : undefined}
             {breadcrumb.value ? <Breadcrumb class="<md:hidden"></Breadcrumb> : undefined}
           </div>
         ) : undefined}
         <div class="h-full flex items-center">
-          {screenfull.value ? (
-            <Screenfull class="custom-hover" color="var(--top-header-text-color)"></Screenfull>
-          ) : undefined}
-          {size.value ? (
-            <SizeDropdown class="custom-hover" color="var(--top-header-text-color)"></SizeDropdown>
-          ) : undefined}
-          {locale.value ? (
-            <LocaleDropdown
-              class="custom-hover"
-              color="var(--top-header-text-color)"
-            ></LocaleDropdown>
-          ) : undefined}
+          {screenfull.value ? <Screenfull class="custom-hover" color="var(--top-header-text-color)"></Screenfull> : undefined}
+          {size.value ? <SizeDropdown class="custom-hover" color="var(--top-header-text-color)"></SizeDropdown> : undefined}
+          {locale.value ? <LocaleDropdown class="custom-hover" color="var(--top-header-text-color)"></LocaleDropdown> : undefined}
           <UserInfo></UserInfo>
         </div>
       </div>

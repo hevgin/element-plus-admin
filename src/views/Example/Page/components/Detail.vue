@@ -33,17 +33,7 @@ const schema = reactive<DescriptionsSchema[]>([
     label: t('exampleDemo.importance'),
     slots: {
       default: (data: any) => {
-        return (
-          <ElTag
-            type={data.importance === 1 ? 'success' : data.importance === 2 ? 'warning' : 'danger'}
-          >
-            {data.importance === 1
-              ? t('tableDemo.important')
-              : data.importance === 2
-                ? t('tableDemo.good')
-                : t('tableDemo.commonly')}
-          </ElTag>
-        )
+        return <ElTag type={data.importance === 1 ? 'success' : data.importance === 2 ? 'warning' : 'danger'}>{data.importance === 1 ? t('tableDemo.important') : data.importance === 2 ? t('tableDemo.good') : t('tableDemo.commonly')}</ElTag>
       }
     }
   },

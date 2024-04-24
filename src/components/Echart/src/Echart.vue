@@ -93,14 +93,12 @@ onMounted(() => {
   window.addEventListener('resize', resizeHandler)
 
   contentEl.value = document.getElementsByClassName(`${variables.namespace}-layout-content`)[0]
-  unref(contentEl) &&
-    (unref(contentEl) as Element).addEventListener('transitionend', contentResizeHandler)
+  unref(contentEl) && (unref(contentEl) as Element).addEventListener('transitionend', contentResizeHandler)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', resizeHandler)
-  unref(contentEl) &&
-    (unref(contentEl) as Element).removeEventListener('transitionend', contentResizeHandler)
+  unref(contentEl) && (unref(contentEl) as Element).removeEventListener('transitionend', contentResizeHandler)
 })
 
 onActivated(() => {

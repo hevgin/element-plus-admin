@@ -79,15 +79,7 @@ onMounted(() => {
           field: 'importance',
           label: t('tableDemo.importance'),
           formatter: (_: Recordable, __: TableColumn, cellValue: number) => {
-            return (
-              <ElTag type={cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'}>
-                {cellValue === 1
-                  ? t('tableDemo.important')
-                  : cellValue === 2
-                    ? t('tableDemo.good')
-                    : t('tableDemo.commonly')}
-              </ElTag>
-            )
+            return <ElTag type={cellValue === 1 ? 'success' : cellValue === 2 ? 'warning' : 'danger'}>{cellValue === 1 ? t('tableDemo.important') : cellValue === 2 ? t('tableDemo.good') : t('tableDemo.commonly')}</ElTag>
           }
         },
         {
@@ -220,12 +212,8 @@ const getSelections = async () => {
 
 <template>
   <ContentWrap :title="`UseTable ${t('tableDemo.operate')}`" style="margin-bottom: 20px">
-    <BaseButton @click="showPagination(true)">
-      {{ t('tableDemo.show') }} {{ t('tableDemo.pagination') }}
-    </BaseButton>
-    <BaseButton @click="showPagination(false)">
-      {{ t('tableDemo.hidden') }} {{ t('tableDemo.pagination') }}
-    </BaseButton>
+    <BaseButton @click="showPagination(true)"> {{ t('tableDemo.show') }} {{ t('tableDemo.pagination') }} </BaseButton>
+    <BaseButton @click="showPagination(false)"> {{ t('tableDemo.hidden') }} {{ t('tableDemo.pagination') }} </BaseButton>
 
     <BaseButton @click="reserveIndex(true)">{{ t('tableDemo.reserveIndex') }}</BaseButton>
     <BaseButton @click="reserveIndex(false)">{{ t('tableDemo.restoreIndex') }}</BaseButton>
@@ -236,9 +224,7 @@ const getSelections = async () => {
     <BaseButton @click="changeTitle">{{ t('tableDemo.changeTitle') }}</BaseButton>
 
     <BaseButton @click="showExpandedRows(true)">{{ t('tableDemo.showExpandedRows') }}</BaseButton>
-    <BaseButton @click="showExpandedRows(false)">{{
-      t('tableDemo.hiddenExpandedRows')
-    }}</BaseButton>
+    <BaseButton @click="showExpandedRows(false)">{{ t('tableDemo.hiddenExpandedRows') }}</BaseButton>
 
     <BaseButton @click="selectAllNone">{{ t('tableDemo.selectAllNone') }}</BaseButton>
 

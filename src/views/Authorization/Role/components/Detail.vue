@@ -69,15 +69,7 @@ const detailSchema = ref<DescriptionsSchema[]>([
           <>
             <div class="flex w-full">
               <div class="flex-1">
-                <ElTree
-                  ref={treeRef}
-                  node-key="id"
-                  props={{ children: 'children', label: 'title' }}
-                  highlight-current
-                  expand-on-click-node={false}
-                  data={treeData.value}
-                  onNode-click={nodeClick}
-                >
+                <ElTree ref={treeRef} node-key="id" props={{ children: 'children', label: 'title' }} highlight-current expand-on-click-node={false} data={treeData.value} onNode-click={nodeClick}>
                   {{
                     default: (data) => {
                       return <span>{data?.data?.title}</span>

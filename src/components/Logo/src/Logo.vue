@@ -50,26 +50,15 @@ watch(
 
 <template>
   <div>
-    <router-link
-      :class="[
-        prefixCls,
-        layout !== 'classic' ? `${prefixCls}__Top` : '',
-        'flex !h-[var(--logo-height)] items-center cursor-pointer pl-8px relative decoration-none overflow-hidden'
-      ]"
-      to="/"
-    >
-      <img
-        src="@/assets/imgs/logo.png"
-        class="w-[calc(var(--logo-height)-10px)] h-[calc(var(--logo-height)-10px)]"
-      />
+    <router-link :class="[prefixCls, layout !== 'classic' ? `${prefixCls}__Top` : '', 'flex !h-[var(--logo-height)] items-center cursor-pointer pl-8px relative decoration-none overflow-hidden']" to="/">
+      <img src="@/assets/imgs/logo.png" class="w-[calc(var(--logo-height)-10px)] h-[calc(var(--logo-height)-10px)]" />
       <div
         v-if="show"
         :class="[
           'ml-10px text-16px font-700',
           {
             'text-[var(--logo-title-text-color)]': layout === 'classic',
-            'text-[var(--top-header-text-color)]':
-              layout === 'topLeft' || layout === 'top' || layout === 'cutMenu'
+            'text-[var(--top-header-text-color)]': layout === 'topLeft' || layout === 'top' || layout === 'cutMenu'
           }
         ]"
       >

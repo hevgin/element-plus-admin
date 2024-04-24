@@ -12,13 +12,7 @@ import {
 import { componentMap } from './helper/componentMap'
 import { propTypes } from '@/utils/propTypes'
 import { getSlot } from '@/utils/tsxHelper'
-import {
-  setTextPlaceholder,
-  setGridProp,
-  setComponentProps,
-  setItemComponentSlots,
-  initModel
-} from './helper'
+import { setTextPlaceholder, setGridProp, setComponentProps, setItemComponentSlots, initModel } from './helper'
 import { useRenderSelect } from './components/useRenderSelect'
 import { useRenderRadio } from './components/useRenderRadio'
 import { useRenderCheckbox } from './components/useRenderCheckbox'
@@ -26,14 +20,7 @@ import { useDesign } from '@/hooks/web/useDesign'
 import { findIndex } from '@/utils'
 import { get, set } from 'lodash-es'
 import { FormProps } from './types'
-import {
-  FormSchema,
-  FormSetProps,
-  ComponentNameEnum,
-  SelectComponentProps,
-  RadioGroupComponentProps,
-  CheckboxGroupComponentProps
-} from './types'
+import { FormSchema, FormSetProps, ComponentNameEnum, SelectComponentProps, RadioGroupComponentProps, CheckboxGroupComponentProps } from './types'
 
 const { renderSelectOptions } = useRenderSelect()
 const { renderRadioOptions } = useRenderRadio()
@@ -157,10 +144,7 @@ export default defineComponent({
       setSchema([
         {
           field: item.field,
-          path:
-            item.component === ComponentNameEnum.TREE_SELECT
-              ? 'componentProps.data'
-              : 'componentProps.options',
+          path: item.component === ComponentNameEnum.TREE_SELECT ? 'componentProps.data' : 'componentProps.options',
           value: options
         }
       ])
@@ -216,11 +200,7 @@ export default defineComponent({
     // 渲染包裹标签，是否使用栅格布局
     const renderWrap = () => {
       const { isCol } = unref(getProps)
-      const content = isCol ? (
-        <ElRow gutter={20}>{renderFormItemWrap()}</ElRow>
-      ) : (
-        renderFormItemWrap()
-      )
+      const content = isCol ? <ElRow gutter={20}>{renderFormItemWrap()}</ElRow> : renderFormItemWrap()
       return content
     }
 
@@ -271,9 +251,7 @@ export default defineComponent({
               slotsMap.default = !componentSlots.default
                 ? () => renderSelectOptions(item)
                 : () => {
-                    return componentSlots.default(
-                      unref((item?.componentProps as SelectComponentProps)?.options)
-                    )
+                    return componentSlots.default(unref((item?.componentProps as SelectComponentProps)?.options))
                   }
             }
 
@@ -285,30 +263,20 @@ export default defineComponent({
             }
 
             // 单选框组和按钮样式
-            if (
-              item.component === ComponentNameEnum.RADIO_GROUP ||
-              item.component === ComponentNameEnum.RADIO_BUTTON
-            ) {
+            if (item.component === ComponentNameEnum.RADIO_GROUP || item.component === ComponentNameEnum.RADIO_BUTTON) {
               slotsMap.default = !componentSlots.default
                 ? () => renderRadioOptions(item)
                 : () => {
-                    return componentSlots.default(
-                      unref((item?.componentProps as CheckboxGroupComponentProps)?.options)
-                    )
+                    return componentSlots.default(unref((item?.componentProps as CheckboxGroupComponentProps)?.options))
                   }
             }
 
             // 多选框组和按钮样式
-            if (
-              item.component === ComponentNameEnum.CHECKBOX_GROUP ||
-              item.component === ComponentNameEnum.CHECKBOX_BUTTON
-            ) {
+            if (item.component === ComponentNameEnum.CHECKBOX_GROUP || item.component === ComponentNameEnum.CHECKBOX_BUTTON) {
               slotsMap.default = !componentSlots.default
                 ? () => renderCheckboxOptions(item)
                 : () => {
-                    return componentSlots.default(
-                      unref((item?.componentProps as RadioGroupComponentProps)?.options)
-                    )
+                    return componentSlots.default(unref((item?.componentProps as RadioGroupComponentProps)?.options))
                   }
             }
 
@@ -369,13 +337,7 @@ export default defineComponent({
         }
       }
       return (
-        <ElFormItem
-          v-show={!item.hidden}
-          ref={(el: any) => setFormItemRefMap(el, item.field)}
-          {...(item.formItemProps || {})}
-          prop={item.field}
-          label={item.label || ''}
-        >
+        <ElFormItem v-show={!item.hidden} ref={(el: any) => setFormItemRefMap(el, item.field)} {...(item.formItemProps || {})} prop={item.field} label={item.label || ''}>
           {formItemSlots}
         </ElFormItem>
       )

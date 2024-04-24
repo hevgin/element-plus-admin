@@ -37,18 +37,7 @@ const pauseResume = () => {
 <template>
   <ContentWrap :title="t('countToDemo.countTo')" :message="t('countToDemo.countToDes')">
     <div class="text-center mb-40px">
-      <CountTo
-        ref="countRef"
-        :start-val="startVal"
-        :end-val="endVal"
-        :duration="duration"
-        :decimals="decimals"
-        :separator="separator"
-        :prefix="prefix"
-        :suffix="suffix"
-        :autoplay="autoplay"
-        class="text-30px font-bold text-[var(--el-color-primary)]"
-      />
+      <CountTo ref="countRef" :start-val="startVal" :end-val="endVal" :duration="duration" :decimals="decimals" :separator="separator" :prefix="prefix" :suffix="suffix" :autoplay="autoplay" class="text-30px font-bold text-[var(--el-color-primary)]" />
     </div>
     <ElRow :gutter="20" justify="space-between">
       <ElCol :xl="8" :lg="8" :md="12" :sm="24" :xs="24">
@@ -90,9 +79,7 @@ const pauseResume = () => {
       <ElCol :span="24">
         <div class="text-center">
           <BaseButton type="primary" @click="start">{{ t('countToDemo.start') }}</BaseButton>
-          <BaseButton @click="pauseResume">
-            {{ t('countToDemo.pause') }}/{{ t('countToDemo.resume') }}
-          </BaseButton>
+          <BaseButton @click="pauseResume"> {{ t('countToDemo.pause') }}/{{ t('countToDemo.resume') }} </BaseButton>
         </div>
       </ElCol>
     </ElRow>

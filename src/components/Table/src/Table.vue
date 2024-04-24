@@ -1,14 +1,5 @@
 <script lang="tsx">
-import {
-  ElTable,
-  ElTableColumn,
-  ElPagination,
-  ComponentSize,
-  ElTooltipProps,
-  ElImage,
-  ElEmpty,
-  ElCard
-} from 'element-plus'
+import { ElTable, ElTableColumn, ElPagination, ComponentSize, ElTooltipProps, ElImage, ElEmpty, ElCard } from 'element-plus'
 import { defineComponent, PropType, ref, computed, unref, watch, onMounted } from 'vue'
 import { propTypes } from '@/utils/propTypes'
 import { setIndex } from './helper'
@@ -47,13 +38,9 @@ export default defineComponent({
     // 是否叠加索引
     reserveIndex: propTypes.bool.def(false),
     // 对齐方式
-    align: propTypes.string
-      .validate((v: string) => ['left', 'center', 'right'].includes(v))
-      .def('left'),
+    align: propTypes.string.validate((v: string) => ['left', 'center', 'right'].includes(v)).def('left'),
     // 表头对齐方式
-    headerAlign: propTypes.string
-      .validate((v: string) => ['left', 'center', 'right'].includes(v))
-      .def('left'),
+    headerAlign: propTypes.string.validate((v: string) => ['left', 'center', 'right'].includes(v)).def('left'),
     data: {
       type: Array as PropType<Recordable[]>,
       default: () => []
@@ -86,21 +73,15 @@ export default defineComponent({
       default: ''
     },
     rowStyle: {
-      type: [Function, Object] as PropType<
-        (row: Recordable, rowIndex: number) => Recordable | CSSProperties
-      >,
+      type: [Function, Object] as PropType<(row: Recordable, rowIndex: number) => Recordable | CSSProperties>,
       default: () => undefined
     },
     cellClassName: {
-      type: [Function, String] as PropType<
-        (row: Recordable, column: any, rowIndex: number) => string | string
-      >,
+      type: [Function, String] as PropType<(row: Recordable, column: any, rowIndex: number) => string | string>,
       default: ''
     },
     cellStyle: {
-      type: [Function, Object] as PropType<
-        (row: Recordable, column: any, rowIndex: number) => Recordable | CSSProperties
-      >,
+      type: [Function, Object] as PropType<(row: Recordable, column: any, rowIndex: number) => Recordable | CSSProperties>,
       default: () => undefined
     },
     headerRowClassName: {
@@ -108,21 +89,15 @@ export default defineComponent({
       default: ''
     },
     headerRowStyle: {
-      type: [Function, Object] as PropType<
-        (row: Recordable, rowIndex: number) => Recordable | CSSProperties
-      >,
+      type: [Function, Object] as PropType<(row: Recordable, rowIndex: number) => Recordable | CSSProperties>,
       default: () => undefined
     },
     headerCellClassName: {
-      type: [Function, String] as PropType<
-        (row: Recordable, column: any, rowIndex: number) => string | string
-      >,
+      type: [Function, String] as PropType<(row: Recordable, column: any, rowIndex: number) => string | string>,
       default: ''
     },
     headerCellStyle: {
-      type: [Function, Object] as PropType<
-        (row: Recordable, column: any, rowIndex: number) => Recordable | CSSProperties
-      >,
+      type: [Function, Object] as PropType<(row: Recordable, column: any, rowIndex: number) => Recordable | CSSProperties>,
       default: () => undefined
     },
     rowKey: propTypes.string.def('id'),
@@ -141,20 +116,7 @@ export default defineComponent({
       default: 'dark'
     },
     tooltipOptions: {
-      type: Object as PropType<
-        Pick<
-          ElTooltipProps,
-          | 'effect'
-          | 'enterable'
-          | 'hideAfter'
-          | 'offset'
-          | 'placement'
-          | 'popperClass'
-          | 'popperOptions'
-          | 'showAfter'
-          | 'showArrow'
-        >
-      >,
+      type: Object as PropType<Pick<ElTooltipProps, 'effect' | 'enterable' | 'hideAfter' | 'offset' | 'placement' | 'popperClass' | 'popperOptions' | 'showAfter' | 'showArrow'>>,
       default: () => ({
         enterable: true,
         placement: 'top',
@@ -170,9 +132,7 @@ export default defineComponent({
       default: () => undefined
     },
     spanMethod: {
-      type: Function as PropType<
-        (param: { row: any; column: any; rowIndex: number; columnIndex: number }) => any[]
-      >,
+      type: Function as PropType<(param: { row: any; column: any; rowIndex: number; columnIndex: number }) => any[]>,
       default: () => undefined
     },
     selectOnIndeterminate: propTypes.bool.def(true),
@@ -344,8 +304,7 @@ export default defineComponent({
     })
 
     const renderTreeTableColumn = (columnsChildren: TableColumn[]) => {
-      const { align, headerAlign, showOverflowTooltip, imagePreview, videoPreview } =
-        unref(getProps)
+      const { align, headerAlign, showOverflowTooltip, imagePreview, videoPreview } = unref(getProps)
       return columnsChildren.map((v) => {
         if (v.hidden) return null
         const props = { ...v } as any
@@ -357,9 +316,7 @@ export default defineComponent({
           default: (...args: any[]) => {
             const data = args[0]
             let isPreview = false
-            isPreview =
-              imagePreview.some((item) => (item as string) === v.field) ||
-              videoPreview.some((item) => (item as string) === v.field)
+            isPreview = imagePreview.some((item) => (item as string) === v.field) || videoPreview.some((item) => (item as string) === v.field)
 
             return children && children.length
               ? renderTreeTableColumn(children)
@@ -377,13 +334,7 @@ export default defineComponent({
         }
 
         return (
-          <ElTableColumn
-            showOverflowTooltip={showOverflowTooltip}
-            align={align}
-            headerAlign={headerAlign}
-            {...props}
-            prop={v.field}
-          >
+          <ElTableColumn showOverflowTooltip={showOverflowTooltip} align={align} headerAlign={headerAlign} {...props} prop={v.field}>
             {slots}
           </ElTableColumn>
         )
@@ -395,14 +346,7 @@ export default defineComponent({
       return (
         <div class="flex items-center">
           {imagePreview.includes(field) ? (
-            <ElImage
-              src={url}
-              fit="cover"
-              class="w-[100%]"
-              lazy
-              preview-src-list={[url]}
-              preview-teleported
-            />
+            <ElImage src={url} fit="cover" class="w-[100%]" lazy preview-src-list={[url]} preview-teleported />
           ) : videoPreview.includes(field) ? (
             <BaseButton
               type="primary"
@@ -421,46 +365,14 @@ export default defineComponent({
     }
 
     const renderTableColumn = (columnsChildren?: TableColumn[]) => {
-      const {
-        columns,
-        reserveIndex,
-        pageSize,
-        currentPage,
-        align,
-        headerAlign,
-        showOverflowTooltip,
-        reserveSelection,
-        imagePreview,
-        videoPreview
-      } = unref(getProps)
+      const { columns, reserveIndex, pageSize, currentPage, align, headerAlign, showOverflowTooltip, reserveSelection, imagePreview, videoPreview } = unref(getProps)
 
       return (columnsChildren || columns).map((v) => {
         if (v.hidden) return null
         if (v.type === 'index') {
-          return (
-            <ElTableColumn
-              type="index"
-              index={
-                v.index ? v.index : (index) => setIndex(reserveIndex, index, pageSize, currentPage)
-              }
-              align={v.align || align}
-              headerAlign={v.headerAlign || headerAlign}
-              label={v.label}
-              fixed={v.fixed}
-              width="65px"
-            ></ElTableColumn>
-          )
+          return <ElTableColumn type="index" index={v.index ? v.index : (index) => setIndex(reserveIndex, index, pageSize, currentPage)} align={v.align || align} headerAlign={v.headerAlign || headerAlign} label={v.label} fixed={v.fixed} width="65px"></ElTableColumn>
         } else if (v.type === 'selection') {
-          return (
-            <ElTableColumn
-              type="selection"
-              reserveSelection={reserveSelection}
-              align={align}
-              headerAlign={headerAlign}
-              selectable={v.selectable}
-              width="50"
-            ></ElTableColumn>
-          )
+          return <ElTableColumn type="selection" reserveSelection={reserveSelection} align={align} headerAlign={headerAlign} selectable={v.selectable} width="50"></ElTableColumn>
         } else {
           const props = { ...v } as any
           if (props.children) delete props.children
@@ -472,9 +384,7 @@ export default defineComponent({
               const data = args[0]
 
               let isPreview = false
-              isPreview =
-                imagePreview.some((item) => (item as string) === v.field) ||
-                videoPreview.some((item) => (item as string) === v.field)
+              isPreview = imagePreview.some((item) => (item as string) === v.field) || videoPreview.some((item) => (item as string) === v.field)
 
               return children && children.length
                 ? renderTreeTableColumn(children)
@@ -492,13 +402,7 @@ export default defineComponent({
           }
 
           return (
-            <ElTableColumn
-              showOverflowTooltip={showOverflowTooltip}
-              align={align}
-              headerAlign={headerAlign}
-              {...props}
-              prop={v.field}
-            >
+            <ElTableColumn showOverflowTooltip={showOverflowTooltip} align={align} headerAlign={headerAlign} {...props} prop={v.field}>
               {slots}
             </ElTableColumn>
           )
@@ -537,13 +441,7 @@ export default defineComponent({
                     }
                   }
                   return (
-                    <ElCard
-                      shadow="hover"
-                      class={unref(getProps).cardWrapClass}
-                      style={unref(getProps).cardWrapStyle}
-                      bodyClass={unref(getProps).cardBodyClass}
-                      bodyStyle={unref(getProps).cardBodyStyle}
-                    >
+                    <ElCard shadow="hover" class={unref(getProps).cardWrapClass} style={unref(getProps).cardWrapStyle} bodyClass={unref(getProps).cardBodyClass} bodyStyle={unref(getProps).cardBodyStyle}>
                       {cardSlots}
                     </ElCard>
                   )
@@ -556,14 +454,7 @@ export default defineComponent({
             </div>
           ) : (
             <>
-              {unref(getProps).showAction && !unref(getProps).customContent ? (
-                <TableActions
-                  columns={unref(getProps).columns}
-                  onChangSize={changSize}
-                  onRefresh={refresh}
-                  onConfirm={confirmSetColumn}
-                />
-              ) : null}
+              {unref(getProps).showAction && !unref(getProps).customContent ? <TableActions columns={unref(getProps).columns} onChangSize={changSize} onRefresh={refresh} onConfirm={confirmSetColumn} /> : null}
               <ElTable ref={elTableRef} data={unref(getProps).data} {...unref(getBindValue)}>
                 {{
                   default: () => renderTableColumn(),
@@ -572,14 +463,7 @@ export default defineComponent({
               </ElTable>
             </>
           )}
-          {unref(getProps).pagination ? (
-            <ElPagination
-              v-model:pageSize={pageSizeRef.value}
-              v-model:currentPage={currentPageRef.value}
-              class="mt-10px"
-              {...unref(pagination)}
-            ></ElPagination>
-          ) : undefined}
+          {unref(getProps).pagination ? <ElPagination v-model:pageSize={pageSizeRef.value} v-model:currentPage={currentPageRef.value} class="mt-10px" {...unref(pagination)}></ElPagination> : undefined}
         </div>
       )
     }

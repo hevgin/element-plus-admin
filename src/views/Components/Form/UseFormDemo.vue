@@ -209,11 +209,7 @@ const schema = reactive<FormSchema[]>([
         )
       },
       onExceed: (files, uploadFiles) => {
-        ElMessage.warning(
-          `The limit is 3, you selected ${files.length} files this time, add up to ${
-            files.length + uploadFiles.length
-          } totally`
-        )
+        ElMessage.warning(`The limit is 3, you selected ${files.length} files this time, add up to ${files.length + uploadFiles.length} totally`)
       },
       slots: {
         default: () => <BaseButton type="primary">Click to upload</BaseButton>,
@@ -224,17 +220,7 @@ const schema = reactive<FormSchema[]>([
 ])
 
 const { formRegister, formMethods } = useForm()
-const {
-  setProps,
-  delSchema,
-  addSchema,
-  setValues,
-  setSchema,
-  getComponentExpose,
-  getFormItemExpose,
-  getElFormExpose,
-  getFormData
-} = formMethods
+const { setProps, delSchema, addSchema, setValues, setSchema, getComponentExpose, getFormItemExpose, getElFormExpose, getFormData } = formMethods
 
 const changeLabelWidth = (width: number | string) => {
   setProps({
@@ -417,9 +403,7 @@ const getData = async () => {
 <template>
   <ContentWrap :title="`UseForm ${t('formDemo.operate')}`" style="margin-bottom: 20px">
     <BaseButton @click="changeLabelWidth(150)">{{ t('formDemo.change') }} labelWidth</BaseButton>
-    <BaseButton @click="changeLabelWidth('auto')"
-      >{{ t('formDemo.restore') }} labelWidth</BaseButton
-    >
+    <BaseButton @click="changeLabelWidth('auto')">{{ t('formDemo.restore') }} labelWidth</BaseButton>
 
     <BaseButton @click="changeSize('large')">{{ t('formDemo.change') }} size</BaseButton>
     <BaseButton @click="changeSize('default')">{{ t('formDemo.restore') }} size</BaseButton>
@@ -427,19 +411,13 @@ const getData = async () => {
     <BaseButton @click="changeDisabled(true)">{{ t('formDemo.disabled') }}</BaseButton>
     <BaseButton @click="changeDisabled(false)">{{ t('formDemo.disablement') }}</BaseButton>
 
-    <BaseButton @click="changeSchema(true)">
-      {{ t('formDemo.delete') }} {{ t('formDemo.select') }}
-    </BaseButton>
-    <BaseButton @click="changeSchema(false)">
-      {{ t('formDemo.add') }} {{ t('formDemo.select') }}
-    </BaseButton>
+    <BaseButton @click="changeSchema(true)"> {{ t('formDemo.delete') }} {{ t('formDemo.select') }} </BaseButton>
+    <BaseButton @click="changeSchema(false)"> {{ t('formDemo.add') }} {{ t('formDemo.select') }} </BaseButton>
 
     <BaseButton @click="setValue(false)">{{ t('formDemo.setValue') }}</BaseButton>
     <BaseButton @click="setValue(true)">{{ t('formDemo.resetValue') }}</BaseButton>
 
-    <BaseButton @click="setLabel">
-      {{ t('formDemo.set') }} {{ t('formDemo.select') }} label
-    </BaseButton>
+    <BaseButton @click="setLabel"> {{ t('formDemo.set') }} {{ t('formDemo.select') }} label </BaseButton>
 
     <BaseButton @click="addItem"> {{ t('formDemo.add') }} {{ t('formDemo.subitem') }} </BaseButton>
 

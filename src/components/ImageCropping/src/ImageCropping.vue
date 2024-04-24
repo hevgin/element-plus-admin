@@ -178,67 +178,37 @@ defineExpose({
   >
     <div>
       <div :style="getBoxStyle" class="flex justify-center items-center">
-        <img
-          v-show="imageUrl"
-          ref="imgRef"
-          :src="imageUrl"
-          class="block max-w-full"
-          crossorigin="anonymous"
-          alt=""
-          srcset=""
-        />
+        <img v-show="imageUrl" ref="imgRef" :src="imageUrl" class="block max-w-full" crossorigin="anonymous" alt="" srcset="" />
       </div>
       <div v-if="showActions" class="mt-10px flex items-center">
         <div class="flex items-center">
           <ElTooltip content="选择文件" placement="bottom">
-            <ElUpload
-              action="''"
-              accept="image/*"
-              :auto-upload="false"
-              :show-file-list="false"
-              :on-change="uploadChange"
-            >
-              <BaseButton size="small" type="primary" class="mt-2px"
-                ><Icon icon="ep:upload-filled"
-              /></BaseButton>
+            <ElUpload action="''" accept="image/*" :auto-upload="false" :show-file-list="false" :on-change="uploadChange">
+              <BaseButton size="small" type="primary" class="mt-2px"><Icon icon="ep:upload-filled" /></BaseButton>
             </ElUpload>
           </ElTooltip>
         </div>
         <div class="flex items-center justify-end flex-1">
           <ElTooltip content="重置" placement="bottom">
-            <BaseButton size="small" type="primary" @click="reset"
-              ><Icon icon="ep:refresh"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="reset"><Icon icon="ep:refresh" /></BaseButton>
           </ElTooltip>
           <ElTooltip content="逆时针旋转" placement="bottom">
-            <BaseButton size="small" type="primary" @click="rotate(-45)"
-              ><Icon icon="ant-design:rotate-left-outlined"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="rotate(-45)"><Icon icon="ant-design:rotate-left-outlined" /></BaseButton>
           </ElTooltip>
           <ElTooltip content="顺时针旋转" placement="bottom">
-            <BaseButton size="small" type="primary" @click="rotate(45)"
-              ><Icon icon="ant-design:rotate-right-outlined"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="rotate(45)"><Icon icon="ant-design:rotate-right-outlined" /></BaseButton>
           </ElTooltip>
           <ElTooltip content="水平翻转" placement="bottom">
-            <BaseButton size="small" type="primary" @click="scale('scaleX')"
-              ><Icon icon="vaadin:arrows-long-h"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="scale('scaleX')"><Icon icon="vaadin:arrows-long-h" /></BaseButton>
           </ElTooltip>
           <ElTooltip content="垂直翻转" placement="bottom">
-            <BaseButton size="small" type="primary" @click="scale('scaleY')"
-              ><Icon icon="vaadin:arrows-long-v"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="scale('scaleY')"><Icon icon="vaadin:arrows-long-v" /></BaseButton>
           </ElTooltip>
           <ElTooltip content="放大" placement="bottom">
-            <BaseButton size="small" type="primary" @click="zoom(0.1)"
-              ><Icon icon="ant-design:zoom-in-outlined"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="zoom(0.1)"><Icon icon="ant-design:zoom-in-outlined" /></BaseButton>
           </ElTooltip>
           <ElTooltip content="缩小" placement="bottom">
-            <BaseButton size="small" type="primary" @click="zoom(-0.1)"
-              ><Icon icon="ant-design:zoom-out-outlined"
-            /></BaseButton>
+            <BaseButton size="small" type="primary" @click="zoom(-0.1)"><Icon icon="ant-design:zoom-out-outlined" /></BaseButton>
           </ElTooltip>
         </div>
       </div>

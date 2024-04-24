@@ -159,20 +159,10 @@ const formValidation = async () => {
 </script>
 
 <template>
-  <Descriptions
-    :title="t('descriptionsDemo.descriptions')"
-    :message="t('descriptionsDemo.descriptionsDes')"
-    :data="data"
-    :schema="schema"
-  />
+  <Descriptions :title="t('descriptionsDemo.descriptions')" :message="t('descriptionsDemo.descriptionsDes')" :data="data" :schema="schema" />
 
   <Form is-custom :model="form" :rules="rules" @register="formRegister">
-    <Descriptions
-      :title="t('descriptionsDemo.form')"
-      :data="data"
-      :schema="schema2"
-      class="mt-20px"
-    />
+    <Descriptions :title="t('descriptionsDemo.form')" :data="data" :schema="schema2" class="mt-20px" />
     <div class="text-center mt-10px">
       <BaseButton @click="formValidation"> {{ t('formDemo.formValidation') }} </BaseButton>
     </div>

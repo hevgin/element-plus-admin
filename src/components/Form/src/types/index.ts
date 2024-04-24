@@ -61,13 +61,7 @@ export enum ComponentNameEnum {
   I_AGREE = 'IAgree'
 }
 
-type CamelCaseComponentName = keyof typeof ComponentNameEnum extends infer K
-  ? K extends string
-    ? K extends `${infer A}_${infer B}`
-      ? `${Capitalize<Lowercase<A>>}${Capitalize<Lowercase<B>>}`
-      : Capitalize<Lowercase<K>>
-    : never
-  : never
+type CamelCaseComponentName = keyof typeof ComponentNameEnum extends infer K ? (K extends string ? (K extends `${infer A}_${infer B}` ? `${Capitalize<Lowercase<A>>}${Capitalize<Lowercase<B>>}` : Capitalize<Lowercase<K>>) : never) : never
 
 export type ComponentName = CamelCaseComponentName
 
@@ -258,11 +252,7 @@ export interface ColorPickerComponentProps extends Partial<ColorPickerProps> {
 
 export interface TransferComponentProps extends Partial<TransferProps> {
   on?: {
-    change?: (
-      value: number | string,
-      direction: 'left' | 'right',
-      movedKeys: string[] | number[]
-    ) => void
+    change?: (value: number | string, direction: 'left' | 'right', movedKeys: string[] | number[]) => void
     leftCheckChange?: (value: any[]) => void
     rightCheckChange?: (value: any[]) => void
   }
@@ -448,9 +438,7 @@ export interface TimePickerComponentProps {
   teleported?: boolean
   tabindex?: number | string
   on?: {
-    change: (
-      val: number | string | Date | [number, number] | [string, string] | [Date, Date]
-    ) => void
+    change: (val: number | string | Date | [number, number] | [string, string] | [Date, Date]) => void
     blur?: (event: FocusEvent) => void
     focus?: (event: FocusEvent) => void
     visibleChange?: (visibility: boolean) => void
@@ -522,8 +510,7 @@ export interface UploadComponentProps extends Partial<UploadProps> {
   style?: CSSProperties
 }
 
-export interface TreeSelectComponentProps
-  extends Omit<Partial<SelectComponentProps>, 'props' | 'on' | 'slots'> {
+export interface TreeSelectComponentProps extends Omit<Partial<SelectComponentProps>, 'props' | 'on' | 'slots'> {
   data?: any[]
   emptyText?: string
   nodeKey?: string

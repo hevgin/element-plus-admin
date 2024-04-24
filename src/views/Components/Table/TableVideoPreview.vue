@@ -61,11 +61,6 @@ getTableList()
 
 <template>
   <ContentWrap :title="t('router.PicturePreview')">
-    <Table
-      :columns="columns"
-      :data="tableDataList"
-      :loading="loading"
-      :video-preview="['image_uri', 'video_uri']"
-    />
+    <Table :columns="columns" :data="tableDataList" :loading="loading" :video-preview="['image_uri', 'video_uri']" />
   </ContentWrap>
 </template>

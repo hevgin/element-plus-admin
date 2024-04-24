@@ -39,12 +39,7 @@ export const useRenderSelect = () => {
     const optionDefaultSlot = componentsProps.slots?.optionDefault
 
     return (
-      <ElOption
-        {...option}
-        key={option[keyAlias || 'key']}
-        label={option[labelAlias || 'label']}
-        value={option[valueAlias || 'value']}
-      >
+      <ElOption {...option} key={option[keyAlias || 'key']} label={option[labelAlias || 'label']} value={option[valueAlias || 'value']}>
         {{
           default: () => (optionDefaultSlot ? optionDefaultSlot(option) : undefined)
         }}

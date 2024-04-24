@@ -17,15 +17,9 @@ export const useRenderMenuItem = () =>
           const { oneShowingChild, onlyOneChild } = hasOneShowingChild(v.children, v)
           const fullPath = isUrl(v.path) ? v.path : pathResolve(parentPath, v.path) // getAllParentPath<AppRouteRecordRaw>(allRouters, v.path).join('/')
 
-          if (
-            oneShowingChild &&
-            (!onlyOneChild?.children || onlyOneChild?.noShowingChildren) &&
-            !meta?.alwaysShow
-          ) {
+          if (oneShowingChild && (!onlyOneChild?.children || onlyOneChild?.noShowingChildren) && !meta?.alwaysShow) {
             return (
-              <ElMenuItem
-                index={onlyOneChild ? pathResolve(fullPath, onlyOneChild.path) : fullPath}
-              >
+              <ElMenuItem index={onlyOneChild ? pathResolve(fullPath, onlyOneChild.path) : fullPath}>
                 {{
                   default: () => renderMenuTitle(onlyOneChild ? onlyOneChild?.meta : meta)
                 }}

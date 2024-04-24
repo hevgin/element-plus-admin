@@ -6,17 +6,9 @@ import { useUserStoreWithOut } from '@/store/modules/user'
 import { objToFormData } from '@/utils'
 
 const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
-  if (
-    config.method === 'post' &&
-    config.headers['Content-Type'] === 'application/x-www-form-urlencoded'
-  ) {
+  if (config.method === 'post' && config.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
     config.data = qs.stringify(config.data)
-  } else if (
-    TRANSFORM_REQUEST_DATA &&
-    config.method === 'post' &&
-    config.headers['Content-Type'] === 'multipart/form-data' &&
-    !(config.data instanceof FormData)
-  ) {
+  } else if (TRANSFORM_REQUEST_DATA && config.method === 'post' && config.headers['Content-Type'] === 'multipart/form-data' && !(config.data instanceof FormData)) {
     config.data = objToFormData(config.data)
   }
   if (config.method === 'get' && config.params) {

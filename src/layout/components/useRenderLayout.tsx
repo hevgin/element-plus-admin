@@ -39,12 +39,7 @@ export const useRenderLayout = () => {
   const renderClassic = () => {
     return (
       <>
-        <div
-          class={[
-            'absolute top-0 left-0 h-full layout-border__right',
-            { '!fixed z-3000': mobile.value }
-          ]}
-        >
+        <div class={['absolute top-0 left-0 h-full layout-border__right', { '!fixed z-3000': mobile.value }]}>
           {logo.value ? (
             <Logo
               class={[
@@ -65,10 +60,8 @@ export const useRenderLayout = () => {
             `${prefixCls}-content`,
             'absolute top-0 h-[100%]',
             {
-              'w-[calc(100%-var(--left-menu-min-width))] left-[var(--left-menu-min-width)]':
-                collapse.value && !mobile.value && !mobile.value,
-              'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]':
-                !collapse.value && !mobile.value && !mobile.value,
+              'w-[calc(100%-var(--left-menu-min-width))] left-[var(--left-menu-min-width)]': collapse.value && !mobile.value && !mobile.value,
+              'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]': !collapse.value && !mobile.value && !mobile.value,
               'fixed !w-full !left-0': mobile.value
             }
           ]}
@@ -79,8 +72,7 @@ export const useRenderLayout = () => {
             class={[
               `${prefixCls}-content-scrollbar`,
               {
-                '!h-[calc(100%-var(--top-tool-height)-var(--tags-view-height))] mt-[calc(var(--top-tool-height)+var(--tags-view-height))]':
-                  fixedHeader.value
+                '!h-[calc(100%-var(--top-tool-height)-var(--tags-view-height))] mt-[calc(var(--top-tool-height)+var(--tags-view-height))]': fixedHeader.value
               }
             ]}
           >
@@ -88,10 +80,8 @@ export const useRenderLayout = () => {
               class={[
                 {
                   'fixed top-0 left-0 z-10': fixedHeader.value,
-                  'w-[calc(100%-var(--left-menu-min-width))] !left-[var(--left-menu-min-width)]':
-                    collapse.value && fixedHeader.value && !mobile.value,
-                  'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)]':
-                    !collapse.value && fixedHeader.value && !mobile.value,
+                  'w-[calc(100%-var(--left-menu-min-width))] !left-[var(--left-menu-min-width)]': collapse.value && fixedHeader.value && !mobile.value,
+                  'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)]': !collapse.value && fixedHeader.value && !mobile.value,
                   '!w-full !left-0': mobile.value
                 }
               ]}
@@ -106,9 +96,7 @@ export const useRenderLayout = () => {
                 ]}
               ></ToolHeader>
 
-              {tagsView.value ? (
-                <TagsView class="layout-border__bottom layout-border__top"></TagsView>
-              ) : undefined}
+              {tagsView.value ? <TagsView class="layout-border__bottom layout-border__top"></TagsView> : undefined}
             </div>
 
             <AppView></AppView>
@@ -133,10 +121,8 @@ export const useRenderLayout = () => {
               `${prefixCls}-content`,
               'h-[100%]',
               {
-                'w-[calc(100%-var(--left-menu-min-width))] left-[var(--left-menu-min-width)]':
-                  collapse.value,
-                'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]':
-                  !collapse.value
+                'w-[calc(100%-var(--left-menu-min-width))] left-[var(--left-menu-min-width)]': collapse.value,
+                'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]': !collapse.value
               }
             ]}
             style="transition: all var(--transition-time-02);"
@@ -146,8 +132,7 @@ export const useRenderLayout = () => {
               class={[
                 `${prefixCls}-content-scrollbar`,
                 {
-                  '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]':
-                    fixedHeader.value && tagsView.value
+                  '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]': fixedHeader.value && tagsView.value
                 }
               ]}
             >
@@ -157,10 +142,8 @@ export const useRenderLayout = () => {
                     'layout-border__bottom absolute',
                     {
                       '!fixed top-0 left-0 z-10': fixedHeader.value,
-                      'w-[calc(100%-var(--left-menu-min-width))] !left-[var(--left-menu-min-width)] mt-[calc(var(--logo-height)+1px)]':
-                        collapse.value && fixedHeader.value,
-                      'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)] mt-[calc(var(--logo-height)+1px)]':
-                        !collapse.value && fixedHeader.value
+                      'w-[calc(100%-var(--left-menu-min-width))] !left-[var(--left-menu-min-width)] mt-[calc(var(--logo-height)+1px)]': collapse.value && fixedHeader.value,
+                      'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)] mt-[calc(var(--logo-height)+1px)]': !collapse.value && fixedHeader.value
                     }
                   ]}
                   style="transition: width var(--transition-time-02), left var(--transition-time-02);"
@@ -205,8 +188,7 @@ export const useRenderLayout = () => {
             class={[
               `${prefixCls}-content-scrollbar`,
               {
-                'mt-[var(--tags-view-height)] !pb-[calc(var(--tags-view-height)+var(--app-footer-height))]':
-                  fixedHeader.value,
+                'mt-[var(--tags-view-height)] !pb-[calc(var(--tags-view-height)+var(--app-footer-height))]': fixedHeader.value,
                 'pb-[var(--app-footer-height)]': !fixedHeader.value
               }
             ]}
@@ -245,14 +227,10 @@ export const useRenderLayout = () => {
               `${prefixCls}-content`,
               'h-[100%]',
               {
-                'w-[calc(100%-var(--tab-menu-min-width))] left-[var(--tab-menu-min-width)]':
-                  collapse.value && !fixedMenu.value,
-                'w-[calc(100%-var(--tab-menu-max-width))] left-[var(--tab-menu-max-width)]':
-                  !collapse.value && !fixedMenu.value,
-                'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]':
-                  collapse.value && fixedMenu.value,
-                'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]':
-                  !collapse.value && fixedMenu.value
+                'w-[calc(100%-var(--tab-menu-min-width))] left-[var(--tab-menu-min-width)]': collapse.value && !fixedMenu.value,
+                'w-[calc(100%-var(--tab-menu-max-width))] left-[var(--tab-menu-max-width)]': !collapse.value && !fixedMenu.value,
+                'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]': collapse.value && fixedMenu.value,
+                'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]': !collapse.value && fixedMenu.value
               }
             ]}
             style="transition: all var(--transition-time-02);"
@@ -262,8 +240,7 @@ export const useRenderLayout = () => {
               class={[
                 `${prefixCls}-content-scrollbar`,
                 {
-                  '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]':
-                    fixedHeader.value && tagsView.value
+                  '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]': fixedHeader.value && tagsView.value
                 }
               ]}
             >
@@ -273,16 +250,11 @@ export const useRenderLayout = () => {
                     'relative layout-border__bottom layout-border__top',
                     {
                       '!fixed top-0 left-0 z-10': fixedHeader.value,
-                      'w-[calc(100%-var(--tab-menu-min-width))] !left-[var(--tab-menu-min-width)] mt-[var(--logo-height)]':
-                        collapse.value && fixedHeader.value,
-                      'w-[calc(100%-var(--tab-menu-max-width))] !left-[var(--tab-menu-max-width)] mt-[var(--logo-height)]':
-                        !collapse.value && fixedHeader.value,
-                      '!fixed top-0 !left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] z-10':
-                        fixedHeader.value && fixedMenu.value,
-                      'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] !left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]':
-                        collapse.value && fixedHeader.value && fixedMenu.value,
-                      'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] !left-[var(--tab-menu-max-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]':
-                        !collapse.value && fixedHeader.value && fixedMenu.value
+                      'w-[calc(100%-var(--tab-menu-min-width))] !left-[var(--tab-menu-min-width)] mt-[var(--logo-height)]': collapse.value && fixedHeader.value,
+                      'w-[calc(100%-var(--tab-menu-max-width))] !left-[var(--tab-menu-max-width)] mt-[var(--logo-height)]': !collapse.value && fixedHeader.value,
+                      '!fixed top-0 !left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] z-10': fixedHeader.value && fixedMenu.value,
+                      'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] !left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]': collapse.value && fixedHeader.value && fixedMenu.value,
+                      'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] !left-[var(--tab-menu-max-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]': !collapse.value && fixedHeader.value && fixedMenu.value
                     }
                   ]}
                   style="transition: width var(--transition-time-02), left var(--transition-time-02);"

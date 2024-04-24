@@ -30,17 +30,7 @@ const themeChange = (val: boolean) => {
 </script>
 
 <template>
-  <ElSwitch
-    :class="prefixCls"
-    v-model="isDark"
-    inline-prompt
-    :border-color="blackColor"
-    :inactive-color="blackColor"
-    :active-color="blackColor"
-    :active-icon="Sun"
-    :inactive-icon="CrescentMoon"
-    @change="themeChange"
-  />
+  <ElSwitch :class="prefixCls" v-model="isDark" inline-prompt :border-color="blackColor" :inactive-color="blackColor" :active-color="blackColor" :active-icon="Sun" :inactive-icon="CrescentMoon" @change="themeChange" />
 </template>
 
 <style lang="less" scoped>
